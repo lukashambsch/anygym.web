@@ -1,11 +1,36 @@
 import React, { Component } from 'react'
 
-class Visit extends Component {
+class VisitRow extends Component {
+  approve() {
+    return this.props.approve;
+  }
+
+  deny() {
+    return this.props.deny;
+  }
+
+  getMember() {
+    return this.props.members[this.props.visit.member_id];
+  }
+
+  getStatus() {
+    return this.props.statuses[this.props.visit.status_id];
+  }
+
   render() {
+    let visit = this.props.visit,
+      member = this.getMember(),
+      status = this.getStatus();
     return (
-      <li>{this.props.visit.visit_id}</li>
+      <tr>
+        <td>{member.first_name + ' ' + member.last_name}</td>
+        <td>{status.status_name}</td>
+        <td>{visit.created_on}</td>
+        <td>{visit.modified_on}</td>
+        <td><button onClick={this.approve(visit)}>Approve</button><button onClick={this.deny(visit)}>Deny</button></td>
+      </tr>
     )
   }
 }
 
-export default Visit
+export default VisitRow

@@ -4,3 +4,10 @@ export const approveVisit = (visit) => {
     visit: visit
   }
 }
+
+export const denyVisit = (visit) => {
+  return {
+    type: 'DENY_VISIT',
+    visit: visit
+  }
+}

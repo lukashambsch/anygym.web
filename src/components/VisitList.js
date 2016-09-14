@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Visit from './Visit'
+import VisitRow from './Visit'
 
 class VisitList extends Component {
   getVisits() {
@@ -9,11 +9,28 @@ class VisitList extends Component {
   render() {
     return (
       <div>
-        <ul>
-          {this.getVisits().map(visit =>
-            <Visit key={visit.visit_id} visit={visit} />
-          )}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Member Name</th>
+              <th>Status</th>
+              <th>Created</th>
+              <th>Modified</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.getVisits().map(visit =>
+              <VisitRow
+                key={visit.visit_id}
+                members={this.props.members}
+                statuses={this.props.statuses}
+                approve={this.props.onApproveClick}
+                deny={this.props.onDenyClick}
+                visit={visit} />
+            )}
+          </tbody>
+        </table>
       </div>
     )
   }
