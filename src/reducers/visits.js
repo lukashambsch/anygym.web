@@ -3,18 +3,22 @@ import { APPROVE_VISIT, DENY_VISIT, REQUEST_VISITS, RECEIVE_VISITS } from '../ac
 const visit = (state, action) => {
   switch (action.type) {
     case APPROVE_VISIT:
-      if (state.visit_id === action.visit_id) {
-        state.status_id = 2
+      if (state.visit_id !== action.visit_id) {
+        return state
       }
+
       return {
-        ...state
+        ...state,
+        status_id: 2
       }
     case DENY_VISIT:
-      if (state.visit_id === action.visit_id) {
-        state.status_id = 3
+      if (state.visit_id !== action.visit_id) {
+        return state
       }
+
       return {
-        ...state
+        ...state,
+        status_id: 3
       }
     default:
       return state
