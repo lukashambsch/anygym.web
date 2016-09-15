@@ -1,21 +1,21 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import thunkMiddleware from 'redux-thunk'
+import createLogger from 'redux-logger'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import reducer from './reducers'
+import { fetchVisits } from './actions'
+
+const loggerMiddleware = createLogger()
 
 const preloadedState = {
-  visibilityFilter: 'SHOW_ALL',
-  visits: [
-    {
-      visit_id: 1,
-      member_id: 1,
-      status_id: 1,
-      created_on: '9/14/2016 12:20PM',
-      modified_on: ''
-    }
-  ],
+  visits: {
+    isFetching: false,
+    visibilityFilter: 'SHOW_ALL',
+    items: []
+  },
   statuses: {
     1: {
       status_id: 1,
@@ -35,10 +35,21 @@ const preloadedState = {
       member_id: 1,
       first_name: 'Lukas',
       last_name: 'Hambsch'
+    },
+    2: {
+      member_id: 2,
+      first_name: 'McKenzie',
+      last_name: 'Hambsch'
     }
   }
 }
-const store = createStore(reducer, preloadedState)
+
+const store = createStore(reducer, preloadedState, applyMiddleware(
+  thunkMiddleware,
+  loggerMiddleware
+))
+
+store.dispatch(fetchVisits())
 
 render(
   <Provider store={store}>

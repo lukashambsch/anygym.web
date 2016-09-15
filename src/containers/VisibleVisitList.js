@@ -19,7 +19,7 @@ const getVisibleVisits = (visits, filter) => {
 
 const mapStateToProps = (state) => {
   return {
-    visits: getVisibleVisits(state.visits, state.visibilityFilter),
+    visits: getVisibleVisits(state.visits.items, state.visits.visibilityFilter),
     statuses: state.statuses,
     members: state.members
   }
@@ -27,11 +27,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onApproveClick: (visit) => {
-      dispatch(approveVisit(visit))
+    onApproveClick: (visit_id) => {
+      dispatch(approveVisit(visit_id))
     },
-    onDenyClick: (visit) => {
-      dispatch(denyVisit(visit))
+    onDenyClick: (visit_id) => {
+      dispatch(denyVisit(visit_id))
     }
   }
 }
