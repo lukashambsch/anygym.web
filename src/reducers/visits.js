@@ -1,29 +1,9 @@
-import { APPROVE_VISIT, DENY_VISIT, REQUEST_VISITS, RECEIVE_VISITS } from '../actions'
+import { APPROVE_VISIT, DENY_VISIT, REQUEST_VISITS, RECEIVE_VISITS, UPDATE_VISIT } from '../actions/visits'
 
-const visit = (state, action) => {
-  switch (action.type) {
-    case APPROVE_VISIT:
-      if (state.visit_id !== action.visit_id) {
-        return state
-      }
-
-      return {
-        ...state,
-        status_id: 2
-      }
-    case DENY_VISIT:
-      if (state.visit_id !== action.visit_id) {
-        return state
-      }
-
-      return {
-        ...state,
-        status_id: 3
-      }
-    default:
-      return state
-  }
-}
+//const pendingId = 1
+const approvedId = 2
+const deniedIdentityId = 3
+//const deniedBannedId = 4
 
 const visits = (state = {
   isFetching: false,
@@ -36,18 +16,33 @@ const visits = (state = {
         isFetching: true
       })
     case RECEIVE_VISITS:
+      let items = {}
+      action.visits.forEach((visit) => {
+        items[visit.visit_id] = visit
+      })
+
       return Object.assign({}, state, {
         isFetching: false,
-        items: action.visits,
+        items: items,
         lastUpdated: action.recievedAt
       })
     case APPROVE_VISIT:
+      state.items[action.visit_id].status_id = approvedId
+
       return Object.assign({}, state, {
-        items: state.items.map(v => visit(v, action))
+        items: state.items
       })
     case DENY_VISIT:
+      state.items[action.visit_id].status_id = deniedIdentityId
+
       return Object.assign({}, state, {
-        items: state.items.map(v => visit(v, action))
+        items: state.items
+      })
+    case UPDATE_VISIT:
+      state.items[action.visit.visit_id] = action.visit
+
+      return Object.assign({}, state, {
+        items: state.items
       })
     default:
       return state

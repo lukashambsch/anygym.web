@@ -6,50 +6,20 @@ import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import App from './components/App'
 import reducer from './reducers'
-import { fetchVisits } from './actions'
+import { fetchVisits } from './actions/visits'
+import { fetchStatuses } from './actions/statuses'
+import { fetchMembers } from './actions/members'
 
 const loggerMiddleware = createLogger()
 
-const preloadedState = {
-  visits: {
-    isFetching: false,
-    visibilityFilter: 'SHOW_ALL',
-    items: []
-  },
-  statuses: {
-    1: {
-      status_id: 1,
-      status_name: 'Pending'
-    },
-    2: {
-      status_id: 2,
-      status_name: 'Approved'
-    },
-    3: {
-      status_id: 3,
-      status_name: 'Denied'
-    }
-  },
-  members: {
-    1: {
-      member_id: 1,
-      first_name: 'Lukas',
-      last_name: 'Hambsch'
-    },
-    2: {
-      member_id: 2,
-      first_name: 'McKenzie',
-      last_name: 'Hambsch'
-    }
-  }
-}
-
-const store = createStore(reducer, preloadedState, applyMiddleware(
+const store = createStore(reducer, applyMiddleware(
   thunkMiddleware,
   loggerMiddleware
 ))
 
 store.dispatch(fetchVisits())
+store.dispatch(fetchStatuses())
+store.dispatch(fetchMembers())
 
 render(
   <Provider store={store}>

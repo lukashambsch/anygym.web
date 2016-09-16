@@ -24,7 +24,7 @@ class VisitRow extends Component {
         <td>{visit.created_on}</td>
         <td>{visit.modified_on}</td>
         <td>
-          <button onClick={() => this.props.approve(visit.visit_id)}>Approve</button>
+          <button onClick={() => this.props.approve(visit)}>Approve</button>
           <button onClick={() => this.props.deny(visit.visit_id)}>Deny</button></td>
       </tr>
     )

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { approveVisit, denyVisit } from '../actions'
+import { approveVisit, denyVisit, putVisit } from '../actions/visits'
 import VisitList from '../components/VisitList'
 
 const getVisibleVisits = (visits, filter) => {
@@ -18,17 +18,19 @@ const getVisibleVisits = (visits, filter) => {
 }
 
 const mapStateToProps = (state) => {
+  let visits = Object.keys(state.visits.items).map((key) => state.visits.items[key])
   return {
-    visits: getVisibleVisits(state.visits.items, state.visits.visibilityFilter),
-    statuses: state.statuses,
-    members: state.members
+    visits: getVisibleVisits(visits, state.visits.visibilityFilter),
+    statuses: state.statuses.items,
+    members: state.members.items
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onApproveClick: (visit_id) => {
-      dispatch(approveVisit(visit_id))
+    onApproveClick: (visit) => {
+      dispatch(approveVisit(visit.visit_id))
+      dispatch(putVisit(visit))
     },
     onDenyClick: (visit_id) => {
       dispatch(denyVisit(visit_id))
