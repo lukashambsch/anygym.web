@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import VisitRow from './Visit'
+import VisitRow from './VisitRow'
 
 class VisitList extends Component {
   getVisits() {
