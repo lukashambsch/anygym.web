@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import axios from 'axios';
 
 export const APPROVE_VISIT = 'APPROVE_VISIT'
 export const DENY_VISIT = 'DENY_VISIT'
@@ -45,10 +45,9 @@ export function fetchVisits() {
   return function(dispatch) {
     dispatch(requestVisits())
 
-    return fetch('http://localhost:8080/api/v1/visits/')
-      .then(response => response.json())
-      .then(json =>
-        dispatch(receiveVisits(json))
+    return axios.get('http://localhost:8080/api/v1/visits/')
+      .then(response =>
+        dispatch(receiveVisits(response.data))
       )
       .catch(err =>
         console.log(err)
@@ -58,17 +57,9 @@ export function fetchVisits() {
 
 export function putVisit(visit) {
   return function(dispatch) {
-    return fetch(`http://localhost:8080/api/v1/visits/${visit.visit_id}/`, {
-      method: 'PUT',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(visit)
-    })
-      .then(response => response.json())
-      .then(json =>
-        dispatch(updateVisit(json))
+    return axios.put(`http://localhost:8080/api/v1/visits/${visit.visit_id}/`, visit)
+      .then(response =>
+        dispatch(updateVisit(response.data))
       )
       .catch(err =>
         console.log(err)

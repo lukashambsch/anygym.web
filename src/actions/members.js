@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import axios from 'axios'
 
 export const REQUEST_MEMBERS = 'REQUEST_MEMBERS'
 export const RECEIVE_MEMBERS = 'RECEIVE_MEMBERS'
@@ -21,10 +21,9 @@ export function fetchMembers() {
   return function(dispatch) {
     dispatch(requestMembers())
 
-    return fetch('http://localhost:8080/api/v1/members/')
-    .then(response => response.json())
-    .then(json =>
-      dispatch(receiveMembers(json))
+    return axios.get('http://localhost:8080/api/v1/members/')
+    .then(response =>
+      dispatch(receiveMembers(response.data))
     )
     .catch(err =>
       console.log(err)

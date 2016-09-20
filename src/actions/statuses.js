@@ -1,4 +1,4 @@
-import fetch from 'isomorphic-fetch'
+import axios from 'axios'
 
 export const REQUEST_STATUSES = 'REQUEST_STATUSES'
 export const RECEIVE_STATUSES = 'RECEIVE_STATUSES'
@@ -21,10 +21,9 @@ export function fetchStatuses() {
   return function(dispatch) {
     dispatch(requestStatuses())
 
-    return fetch('http://localhost:8080/api/v1/statuses/')
-      .then(response => response.json())
-      .then(json =>
-        dispatch(receiveStatuses(json))
+    return axios.get('http://localhost:8080/api/v1/statuses/')
+      .then(response =>
+        dispatch(receiveStatuses(response.data))
       )
       .catch(err =>
         console.log(err)
