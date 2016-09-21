@@ -1,28 +1,17 @@
 import axios from 'axios';
 
-export const APPROVE_VISIT = 'APPROVE_VISIT'
-export const DENY_VISIT = 'DENY_VISIT'
 export const UPDATE_VISIT = 'UPDATE_VISIT'
 export const REQUEST_VISITS = 'REQUEST_VISITS'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
 
-export const approveVisit = (visit_id) => {
-  return {
-    type: APPROVE_VISIT,
-    visit_id
-  }
-}
-
-export const denyVisit = (visit_id) => {
-  return {
-    type: DENY_VISIT,
-    visit_id
-  }
-}
+//const pendingId = 1
+const approvedId = 2
+const deniedIdentityId = 3
+//const deniedBannedId = 4
 
 export const updateVisit = (visit) => {
   return {
-    UPDATE_VISIT,
+    type: UPDATE_VISIT,
     visit
   }
 }
@@ -52,6 +41,20 @@ export function fetchVisits() {
       .catch(err =>
         console.log(err)
       )
+  }
+}
+
+export function approveVisit(visit) {
+  return function(dispatch) {
+    visit.status_id = approvedId
+    dispatch(putVisit(visit))
+  }
+}
+
+export function denyVisit(visit) {
+  return function(dispatch) {
+    visit.status_id = deniedIdentityId
+    dispatch(putVisit(visit))
   }
 }
 
