@@ -21,7 +21,7 @@ export function fetchStatuses() {
   return function(dispatch) {
     dispatch(requestStatuses())
 
-    return axios.get('http://localhost:8080/api/v1/statuses/')
+    return axios.get('http://localhost:8080/api/v1/statuses')
       .then(response =>
         dispatch(receiveStatuses(response.data))
       )

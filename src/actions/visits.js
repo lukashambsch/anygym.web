@@ -45,7 +45,7 @@ export function fetchVisits() {
   return function(dispatch) {
     dispatch(requestVisits())
 
-    return axios.get('http://localhost:8080/api/v1/visits/')
+    return axios.get('http://localhost:8080/api/v1/visits')
       .then(response =>
         dispatch(receiveVisits(response.data))
       )
@@ -57,7 +57,7 @@ export function fetchVisits() {
 
 export function putVisit(visit) {
   return function(dispatch) {
-    return axios.put(`http://localhost:8080/api/v1/visits/${visit.visit_id}/`, visit)
+    return axios.put(`http://localhost:8080/api/v1/visits/${visit.visit_id}`, visit)
       .then(response =>
         dispatch(updateVisit(response.data))
       )

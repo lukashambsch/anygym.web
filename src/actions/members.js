@@ -21,7 +21,7 @@ export function fetchMembers() {
   return function(dispatch) {
     dispatch(requestMembers())
 
-    return axios.get('http://localhost:8080/api/v1/members/')
+    return axios.get('http://localhost:8080/api/v1/members')
     .then(response =>
       dispatch(receiveMembers(response.data))
     )
