@@ -12,6 +12,7 @@ import LoginContainer from './containers/LoginContainer.js'
 import { fetchVisits } from './actions/visits'
 import { fetchStatuses } from './actions/statuses'
 import { fetchMembers } from './actions/members'
+import { getToken } from './actions/auth'
 
 const loggerMiddleware = createLogger()
 
@@ -25,9 +26,12 @@ const routes = <Route path="/" component={App}>
   <Route path="visits" component={VisibleVisitList} />
 </Route>
 
-store.dispatch(fetchVisits())
-store.dispatch(fetchStatuses())
-store.dispatch(fetchMembers())
+store.dispatch(getToken())
+setTimeout(() => {
+  store.dispatch(fetchVisits())
+  store.dispatch(fetchStatuses())
+  store.dispatch(fetchMembers())
+}, 500)
 
 render(
   <Provider store={store}>
