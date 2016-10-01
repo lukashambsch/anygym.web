@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore } from 'react-router-redux'
 import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import { createStore, applyMiddleware } from 'redux'
@@ -21,10 +22,7 @@ const store = createStore(reducer, applyMiddleware(
   loggerMiddleware
 ))
 
-const routes = <Route path="/" component={App}>
-  <Route path="login" component={LoginContainer} />
-  <Route path="visits" component={VisibleVisitList} />
-</Route>
+const history = syncHistoryWithStore(browserHistory, store)
 
 store.dispatch(getToken())
 setTimeout(() => {
@@ -35,7 +33,12 @@ setTimeout(() => {
 
 render(
   <Provider store={store}>
-    <Router history={browserHistory}>{routes}</Router>
+    <Router history={history}>
+      <Route path="/" component={App}>
+        <Route path="login" component={LoginContainer} />
+        <Route path="visits" component={VisibleVisitList} />
+      </Route>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )

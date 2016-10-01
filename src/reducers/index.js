@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { routerReducer } from 'react-router-redux'
 import auth from './auth'
 import visits from './visits'
 import visibilityFilter from './visibilityFilter'
@@ -10,7 +11,8 @@ const checkInApp = combineReducers({
   visits,
   visibilityFilter,
   statuses,
-  members
+  members,
+  routing: routerReducer
 })
 
 export default checkInApp
