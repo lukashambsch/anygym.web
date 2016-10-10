@@ -4,7 +4,8 @@ import {
   SET_AUTH_SUCCESS,
   SET_AUTH_FAILURE,
   HANDLE_USERNAME_CHANGE,
-  HANDLE_PASSWORD_CHANGE
+  HANDLE_PASSWORD_CHANGE,
+  REQUEST_TOKEN
 } from '../actions/auth'
 
 const auth = (state = {
@@ -20,6 +21,7 @@ const auth = (state = {
       axios.defaults.headers.common['Authorization'] = token
 
       return Object.assign({}, state, {
+        isAuthenticating: false,
         authenticated: true,
         token: token
       })
@@ -27,6 +29,7 @@ const auth = (state = {
       axios.defaults.headers.common['Authorization'] = ""
 
       return Object.assign({}, state, {
+        isAuthenticating: false,
         authenticated: false,
         token: ""
       })
@@ -37,6 +40,10 @@ const auth = (state = {
     case HANDLE_PASSWORD_CHANGE:
       return Object.assign({}, state, {
         password: action.password
+      })
+    case REQUEST_TOKEN:
+      return Object.assign({}, state, {
+        isAuthenticating: true
       })
     default:
       return state
