@@ -1,24 +1,24 @@
 import { connect } from 'react-redux'
 import LoginForm from '../components/LoginForm'
-import { handleUsernameChange, handlePasswordChange, login } from '../actions/auth'
+import { handleEmailChange, handlePasswordChange, login } from '../actions/auth'
 
 const mapStateToProps = (state) => {
   return {
-    username: state.auth.username,
+    email: state.auth.email,
     password: state.auth.password
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onUsernameChange: (event) => {
-      dispatch(handleUsernameChange(event))
+    onEmailChange: (event) => {
+      dispatch(handleEmailChange(event))
     },
     onPasswordChange: (event) => {
       dispatch(handlePasswordChange(event))
     },
-    login: (username, password) => {
-      dispatch(login(username, password))
+    login: (email, password) => {
+      dispatch(login(email, password))
     }
   }
 }

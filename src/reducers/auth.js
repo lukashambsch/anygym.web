@@ -3,7 +3,7 @@ import axios from 'axios'
 import {
   SET_AUTH_SUCCESS,
   SET_AUTH_FAILURE,
-  HANDLE_USERNAME_CHANGE,
+  HANDLE_EMAIL_CHANGE,
   HANDLE_PASSWORD_CHANGE,
   REQUEST_TOKEN
 } from '../actions/auth'
@@ -12,7 +12,7 @@ const auth = (state = {
   isAuthenticating: false,
   authenticated: false,
   token: '',
-  username: '',
+  email: '',
   password: ''
 }, action) => {
   switch (action.type) {
@@ -33,9 +33,9 @@ const auth = (state = {
         authenticated: false,
         token: ""
       })
-    case HANDLE_USERNAME_CHANGE:
+    case HANDLE_EMAIL_CHANGE:
       return Object.assign({}, state, {
-        username: action.username
+        email: action.email
       })
     case HANDLE_PASSWORD_CHANGE:
       return Object.assign({}, state, {

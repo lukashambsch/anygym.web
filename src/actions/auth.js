@@ -7,7 +7,7 @@ import { fetchMembers } from './members'
 export const GET_TOKEN = 'GET_TOKEN'
 export const SET_AUTH_SUCCESS = 'SET_AUTH_SUCCESS'
 export const SET_AUTH_FAILURE = 'SET_AUTH_FAILURE'
-export const HANDLE_USERNAME_CHANGE = 'HANDLE_USERNAME_CHANGE'
+export const HANDLE_EMAIL_CHANGE = 'HANDLE_EMAIL_CHANGE'
 export const HANDLE_PASSWORD_CHANGE = 'HANDLE_PASSWORD_CHANGE'
 export const REQUEST_TOKEN = 'REQUEST_TOKEN'
 
@@ -26,10 +26,10 @@ export const authenticateFailure = (token) => {
   }
 }
 
-export const handleUsernameChange = (event) => {
+export const handleEmailChange = (event) => {
   return {
-    type: HANDLE_USERNAME_CHANGE,
-    username: event.target.value
+    type: HANDLE_EMAIL_CHANGE,
+    email: event.target.value
   }
 }
 
@@ -46,17 +46,17 @@ export const requestToken = () => {
   }
 }
 
-export function login (username, password) {
+export function login (email, password) {
   return function(dispatch) {
-    dispatch(getToken())
+    dispatch(getToken({email: email, password: password}))
   }
 }
 
-export function getToken() {
+export function getToken(user) {
   return function(dispatch) {
     dispatch(requestToken())
 
-    return axios.get('http://localhost:8080/api/v1/authenticate')
+    return axios.post('http://localhost:8080/api/v1/authenticate', user)
       .then(response => {
         dispatch(authenticateSuccess(response.data))
         dispatch(fetchVisits())
