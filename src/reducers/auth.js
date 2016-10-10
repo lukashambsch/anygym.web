@@ -1,10 +1,18 @@
 import axios from 'axios'
 
-import { SET_AUTH_SUCCESS, SET_AUTH_FAILURE } from '../actions/auth'
+import {
+  SET_AUTH_SUCCESS,
+  SET_AUTH_FAILURE,
+  HANDLE_USERNAME_CHANGE,
+  HANDLE_PASSWORD_CHANGE
+} from '../actions/auth'
 
 const auth = (state = {
+  isAuthenticating: false,
   authenticated: false,
-  token: ''
+  token: '',
+  username: '',
+  password: ''
 }, action) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS:
@@ -21,6 +29,14 @@ const auth = (state = {
       return Object.assign({}, state, {
         authenticated: false,
         token: ""
+      })
+    case HANDLE_USERNAME_CHANGE:
+      return Object.assign({}, state, {
+        username: action.username
+      })
+    case HANDLE_PASSWORD_CHANGE:
+      return Object.assign({}, state, {
+        password: action.password
       })
     default:
       return state
