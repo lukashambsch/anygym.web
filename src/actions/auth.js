@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { push } from 'react-router-redux'
-import { store } from '../store'
 import { fetchVisits } from './visits'
 import { fetchStatuses } from './statuses'
 import { fetchMembers } from './members'
@@ -13,12 +12,6 @@ export const HANDLE_PASSWORD_CHANGE = 'HANDLE_PASSWORD_CHANGE'
 export const REQUEST_TOKEN = 'REQUEST_TOKEN'
 
 export const authenticateSuccess = (token) => {
-  store.dispatch(push('/visits'))
-  setTimeout(() => {
-    store.dispatch(fetchVisits())
-    store.dispatch(fetchStatuses())
-    store.dispatch(fetchMembers())
-  }, 500)
 
   return {
     type: SET_AUTH_SUCCESS,
@@ -64,9 +57,13 @@ export function getToken() {
     dispatch(requestToken())
 
     return axios.get('http://localhost:8080/api/v1/authenticate')
-      .then(response =>
+      .then(response => {
         dispatch(authenticateSuccess(response.data))
-      )
+        dispatch(fetchVisits())
+        dispatch(fetchStatuses())
+        dispatch(fetchMembers())
+        dispatch(push('/visits'))
+      })
       .catch(err =>
         console.log(err)
       )
