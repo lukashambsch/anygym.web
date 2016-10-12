@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import VisitRow from './VisitRow'
 
 class VisitList extends Component {
+  componentWillMount() {
+    this.props.loadData()
+  }
+
   getVisits() {
     return this.props.visits || [];
   }

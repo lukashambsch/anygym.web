@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
-import { approveVisit, denyVisit } from '../actions/visits'
+import { approveVisit, denyVisit, fetchVisits } from '../actions/visits'
+import { fetchMembers } from '../actions/members'
+import { fetchStatuses } from '../actions/statuses'
 import VisitList from '../components/VisitList'
 
 const getVisibleVisits = (visits, filter) => {
@@ -33,6 +35,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     onDenyClick: (visit) => {
       dispatch(denyVisit(visit))
+    },
+    loadData: () => {
+      dispatch(fetchVisits())
+      dispatch(fetchStatuses())
+      dispatch(fetchMembers())
     }
   }
 }
