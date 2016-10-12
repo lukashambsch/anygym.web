@@ -6,10 +6,6 @@ class VisitList extends Component {
     this.props.loadData()
   }
 
-  getVisits() {
-    return this.props.visits || [];
-  }
-
   render() {
     return (
       <div>
@@ -24,7 +20,7 @@ class VisitList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.getVisits().map(visit =>
+            {this.props.visits.map(visit =>
               <VisitRow
                 key={visit.visit_id}
                 members={this.props.members}
