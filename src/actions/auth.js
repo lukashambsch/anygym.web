@@ -7,8 +7,11 @@ export const SET_AUTH_SUCCESS = 'SET_AUTH_SUCCESS'
 export const SET_AUTH_FAILURE = 'SET_AUTH_FAILURE'
 export const HANDLE_EMAIL_CHANGE = 'HANDLE_EMAIL_CHANGE'
 export const HANDLE_PASSWORD_CHANGE = 'HANDLE_PASSWORD_CHANGE'
+export const HANDLE_PASSWORD_CONFIRM_CHANGE = 'HANDLE_PASSWORD_CONFIRM_CHANGE'
 export const REQUEST_TOKEN = 'REQUEST_TOKEN'
 export const CHECK_FOR_TOKEN = 'CHECK_FOR_TOKEN'
+export const REQUEST_REGISTER = 'REQUEST_REGISTER'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 
 export const authenticateSuccess = (token) => {
   let authHeader = `Bearer ${token}`
@@ -18,6 +21,12 @@ export const authenticateSuccess = (token) => {
   return {
     type: SET_AUTH_SUCCESS,
     token: token
+  }
+}
+
+export const registerSuccess = () => {
+  return {
+    type: REGISTER_SUCCESS
   }
 }
 
@@ -44,9 +53,22 @@ export const handlePasswordChange = (event) => {
   }
 }
 
+export const handlePasswordConfirmChange = (event) => {
+  return {
+    type: HANDLE_PASSWORD_CONFIRM_CHANGE,
+    passwordConfirm: event.target.value
+  }
+}
+
 export const requestToken = () => {
   return {
     type: REQUEST_TOKEN
+  }
+}
+
+export const requestRegister = () => {
+  return {
+    type: REQUEST_REGISTER
   }
 }
 
@@ -84,6 +106,22 @@ export function getToken(user) {
       })
       .catch(err =>
         dispatch(authenticateFailure(err))
+      )
+  }
+}
+
+export function register(user) {
+  return function(dispatch) {
+    dispatch(requestRegister())
+
+    return axios.post('http://localhost:8080/api/v1/users', user)
+      .then(response => {
+        dispatch(registerSuccess(response.data))
+        dispatch(getToken(user))
+          .then(() => dispatch(push('/visits')) )
+      })
+      .catch(err =>
+        console.log(err)
       )
   }
 }
