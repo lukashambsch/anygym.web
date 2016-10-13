@@ -11,16 +11,22 @@ export const REQUEST_TOKEN = 'REQUEST_TOKEN'
 export const CHECK_FOR_TOKEN = 'CHECK_FOR_TOKEN'
 
 export const authenticateSuccess = (token) => {
+  let authHeader = `Bearer ${token}`
+  axios.defaults.headers.common['Authorization'] = authHeader
+  Cookies.set('jwtToken', token)
+
   return {
     type: SET_AUTH_SUCCESS,
     token: token
   }
 }
 
-export const authenticateFailure = (token) => {
+export const authenticateFailure = (err) => {
+  delete axios.defaults.headers.common['Authorization']
+
   return {
     type: SET_AUTH_FAILURE,
-    token: token
+    error: err
   }
 }
 
@@ -44,6 +50,23 @@ export const requestToken = () => {
   }
 }
 
+export const checkForToken = () => {
+  let token = Cookies.get('jwtToken');
+
+  if (token) {
+    let authHeader = `Bearer ${token}`
+    axios.defaults.headers.common['Authorization'] = authHeader
+  } else {
+    delete axios.defaults.headers.common['Authorization']
+  }
+
+  return {
+    type: CHECK_FOR_TOKEN,
+    token: token,
+    authenticated: token ? true : false
+  }
+}
+
 export function login (email, password) {
   return function(dispatch) {
     dispatch(getToken({email: email, password: password}))
@@ -60,14 +83,7 @@ export function getToken(user) {
         dispatch(push('/visits'))
       })
       .catch(err =>
-        console.log(err)
+        dispatch(authenticateFailure(err))
       )
-  }
-}
-
-export const checkForToken = () => {
-  return {
-    type: CHECK_FOR_TOKEN,
-    token: Cookies.get('jwtToken')
   }
 }

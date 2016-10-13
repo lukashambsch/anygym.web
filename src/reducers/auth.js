@@ -1,6 +1,3 @@
-import axios from 'axios'
-import Cookies from 'js-cookie'
-
 import {
   SET_AUTH_SUCCESS,
   SET_AUTH_FAILURE,
@@ -19,18 +16,12 @@ const auth = (state = {
 }, action) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS:
-      let token = `Bearer ${action.token}`
-      axios.defaults.headers.common['Authorization'] = token
-      Cookies.set('jwtToken', token)
-
       return Object.assign({}, state, {
         isAuthenticating: false,
         authenticated: true,
-        token: token
+        token: action.token
       })
     case SET_AUTH_FAILURE:
-      axios.defaults.headers.common['Authorization'] = ""
-
       return Object.assign({}, state, {
         isAuthenticating: false,
         authenticated: false,
@@ -49,15 +40,9 @@ const auth = (state = {
         isAuthenticating: true
       })
     case CHECK_FOR_TOKEN:
-      if (action.token) {
-        axios.defaults.headers.common['Authorization'] = action.token
-      } else {
-        delete axios.defaults.headers.common['Authorization']
-      }
-
       return Object.assign({}, state, {
         isAuthenticating: false,
-        authenticated: action.token ? true : false,
+        authenticated: action.authenticated,
         token: action.token
       })
     default:
