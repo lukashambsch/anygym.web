@@ -4,45 +4,14 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import VisitRow from '../../src/components/VisitRow'
+import { visits, statuses, members } from '../mock-data'
 
 
 describe('VisitRow', () => {
-  let visit, statuses, members, props
+  let visit, props
 
   beforeEach(() => {
-    visit = {
-      visit_id: 1,
-      member_id: 1,
-      status_id: 1
-    }
-
-    statuses = {
-      1: {
-        status_id: 1,
-        status_name: 'Pending'
-      },
-      2: {
-        status_id: 2,
-        status_name: 'Approved'
-      }
-    }
-
-    members = {
-      1: {
-        member_id: 1,
-        user_id: 1,
-        first_name: 'Lukas',
-        last_name: 'Hambsch',
-        address_id: null
-      },
-      2: {
-        member_id: 2,
-        user_id: 2,
-        first_name: 'McKenzie',
-        last_name: 'Hambsch',
-        address_id: null
-      }
-    }
+    visit = visits[0]
 
     props = {
       key: visit.visit_id,
