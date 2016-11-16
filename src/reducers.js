@@ -6,6 +6,7 @@ import visits from './visit/reducer'
 import visibilityFilter from './visit/visibilityFilterReducer'
 import statuses from './status/reducer'
 import members from './member/reducer'
+import locations from './location/reducer'
 
 const reducers = combineReducers({
   auth,
@@ -13,6 +14,7 @@ const reducers = combineReducers({
   visibilityFilter,
   statuses,
   members,
+  locations,
   routing: routerReducer
 })
 

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 
 import AppContainer from './AppContainer'
 import VisibleVisitList from './visit/VisibleVisitList'
+import LocationListContainer from './location/LocationListContainer'
 import LoginContainer from './auth/LoginContainer'
 import RegisterContainer from './auth/RegisterContainer'
 import { store } from './store'
@@ -19,6 +20,7 @@ var router =
         <Route path="login" component={LoginContainer} />
         <Route path="register" component={RegisterContainer} />
         <Route path="visits" component={VisibleVisitList} />
+        <Route path="locations" component={LocationListContainer} />
       </Route>
     </Router>
   </Provider>

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 
 export const UPDATE_VISIT = 'UPDATE_VISIT'
 export const REQUEST_VISITS = 'REQUEST_VISITS'
@@ -34,7 +34,7 @@ export function fetchVisits() {
   return function(dispatch) {
     dispatch(requestVisits())
 
-    return axios.get('http://localhost:8080/api/v1/visits')
+    return axios.get('/visits')
       .then(response =>
         dispatch(receiveVisits(response.data))
       )
@@ -60,7 +60,7 @@ export function denyVisit(visit) {
 
 export function putVisit(visit) {
   return function(dispatch) {
-    return axios.put(`http://localhost:8080/api/v1/visits/${visit.visit_id}`, visit)
+    return axios.put(`/visits/${visit.visit_id}`, visit)
       .then(response =>
         dispatch(updateVisit(response.data))
       )

@@ -99,7 +99,7 @@ export function getToken(user) {
   return function(dispatch) {
     dispatch(requestToken())
 
-    return axios.post('http://localhost:8080/api/v1/authenticate', user)
+    return axios.post('/authenticate', user)
       .then(response => {
         dispatch(authenticateSuccess(response.data))
         dispatch(push('/visits'))
@@ -114,7 +114,7 @@ export function register(user) {
   return function(dispatch) {
     dispatch(requestRegister())
 
-    return axios.post('http://localhost:8080/api/v1/users', user)
+    return axios.post('/users', user)
       .then(response => {
         dispatch(registerSuccess(response.data))
         dispatch(getToken(user))
