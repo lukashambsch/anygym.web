@@ -2,7 +2,7 @@ import { REQUEST_LOCATIONS, RECEIVE_LOCATIONS } from './actions'
 
 const locations = (state = {
   isFetching: false,
-  items: []
+  items: {}
 }, action) => {
   switch (action.type) {
     case REQUEST_LOCATIONS:

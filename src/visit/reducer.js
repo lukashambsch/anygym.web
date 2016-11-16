@@ -3,7 +3,7 @@ import { REQUEST_VISITS, RECEIVE_VISITS, UPDATE_VISIT } from './actions'
 const visits = (state = {
   isFetching: false,
   visibilityFilter: 'SHOW_ALL',
-  items: []
+  items: {}
 }, action) => {
   switch (action.type) {
     case REQUEST_VISITS:
