@@ -1,4 +1,4 @@
-import { REQUEST_MEMBERS, RECEIVE_MEMBERS } from '../actions/members'
+import { REQUEST_MEMBERS, RECEIVE_MEMBERS } from './actions'
 
 const members = (state = {
   isFetching: false,

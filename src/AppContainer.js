@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import App from '../components/App'
-import { checkForToken } from '../actions/auth'
+import App from './App'
+import { checkForToken } from './auth/actions'
 
 const mapStateToProps = (state) => {
   return {}

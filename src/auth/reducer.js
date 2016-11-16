@@ -8,7 +8,7 @@ import {
   CHECK_FOR_TOKEN,
   REQUEST_REGISTER,
   REGISTER_SUCCESS
-} from '../actions/auth'
+} from './actions'
 
 const auth = (state = {
   isAuthenticating: false,

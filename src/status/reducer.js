@@ -1,4 +1,4 @@
-import { REQUEST_STATUSES, RECEIVE_STATUSES } from '../actions/statuses'
+import { REQUEST_STATUSES, RECEIVE_STATUSES } from './actions'
 
 const statuses = (state = {
   isFetching: false,

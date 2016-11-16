@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+
 import VisitRow from './VisitRow'
 
 class VisitList extends Component {

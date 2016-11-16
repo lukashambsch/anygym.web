@@ -1,4 +1,4 @@
-import { REQUEST_VISITS, RECEIVE_VISITS, UPDATE_VISIT } from '../actions/visits'
+import { REQUEST_VISITS, RECEIVE_VISITS, UPDATE_VISIT } from './actions'
 
 const visits = (state = {
   isFetching: false,

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import { shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import VisitList from '../../src/components/VisitList'
+import VisitList from '../../src/visit/VisitList'
 import { visits, statuses, members } from '../mock-data'
 
 

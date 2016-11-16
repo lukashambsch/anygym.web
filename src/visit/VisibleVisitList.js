@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
-import { approveVisit, denyVisit, fetchVisits } from '../actions/visits'
-import { fetchMembers } from '../actions/members'
-import { fetchStatuses } from '../actions/statuses'
-import VisitList from '../components/VisitList'
+
+import { approveVisit, denyVisit, fetchVisits } from './actions'
+import { fetchMembers } from '../member/actions'
+import { fetchStatuses } from '../status/actions'
+import VisitList from './VisitList'
 
 const getVisibleVisits = (visits, filter) => {
   switch (filter) {
