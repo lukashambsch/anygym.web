@@ -89,7 +89,20 @@ export const checkForToken = () => {
   }
 }
 
-export function login (email, password) {
+export function verifyToken() {
+  return function(dispatch) {
+    let token = Cookies.get('jwtToken');
+
+    if (token) {
+      dispatch(authenticateSuccess(token))
+    } else {
+      dispatch(authenticateFailure('No token present'))
+      dispatch(push('/login'))
+    }
+  }
+}
+
+export function login(email, password) {
   return function(dispatch) {
     dispatch(getToken({email: email, password: password}))
   }

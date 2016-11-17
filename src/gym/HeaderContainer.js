@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
-import App from './App'
-import { checkForToken } from './auth/actions'
+import Header from './Header'
+import { checkForToken } from '../auth/actions'
 
 const mapStateToProps = (state) => {
   return {}
@@ -15,9 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const AppContainer = connect(
+const HeaderContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(Header)
 
-export default AppContainer
+export default HeaderContainer

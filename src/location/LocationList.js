@@ -4,7 +4,6 @@ import LocationRow from './LocationRow'
 
 class LocationList extends Component {
   componentWillMount() {
-    console.log(this.props)
     this.props.loadData()
   }
 

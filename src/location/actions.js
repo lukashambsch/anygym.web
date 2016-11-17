@@ -22,11 +22,11 @@ export function fetchLocations() {
     dispatch(requestLocations())
 
     return axios.get('/gym_locations')
-    .then(response =>
-      dispatch(receiveLocations(response.data))
-    )
-    .catch(err =>
-      console.log(err)
-    )
+      .then(response =>
+        dispatch(receiveLocations(response.data))
+      )
+      .catch(err =>
+        console.log(err)
+      )
   }
 }
