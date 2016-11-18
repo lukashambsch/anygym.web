@@ -1,18 +1,13 @@
 import { connect } from 'react-redux'
 
 import Header from './Header'
-import { verifyToken } from '../auth/actions'
 
 const mapStateToProps = (state) => {
   return {}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    checkForToken: () => {
-      dispatch(verifyToken())
-    }
-  }
+  return {}
 }
 
 const HeaderContainer = connect(

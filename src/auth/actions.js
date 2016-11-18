@@ -2,6 +2,8 @@ import axios from 'axios'
 import Cookies from 'js-cookie'
 import { push } from 'react-router-redux'
 
+import config from '../config'
+
 export const GET_TOKEN = 'GET_TOKEN'
 export const SET_AUTH_SUCCESS = 'SET_AUTH_SUCCESS'
 export const SET_AUTH_FAILURE = 'SET_AUTH_FAILURE'
@@ -16,7 +18,7 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
 export const authenticateSuccess = (token) => {
   let authHeader = `Bearer ${token}`
   axios.defaults.headers.common['Authorization'] = authHeader
-  Cookies.set('jwtToken', token)
+  Cookies.set(config.tokenKey, token)
 
   return {
     type: SET_AUTH_SUCCESS,
@@ -73,7 +75,7 @@ export const requestRegister = () => {
 }
 
 export const checkForToken = () => {
-  let token = Cookies.get('jwtToken');
+  let token = Cookies.get(config.tokenKey);
 
   if (token) {
     let authHeader = `Bearer ${token}`
@@ -91,7 +93,7 @@ export const checkForToken = () => {
 
 export function verifyToken() {
   return function(dispatch) {
-    let token = Cookies.get('jwtToken');
+    let token = Cookies.get(config.tokenKey);
 
     if (token) {
       dispatch(authenticateSuccess(token))

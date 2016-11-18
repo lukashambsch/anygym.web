@@ -3,8 +3,6 @@ import axios from 'axios'
 export const UPDATE_VISIT = 'UPDATE_VISIT'
 export const REQUEST_VISITS = 'REQUEST_VISITS'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
-export const VISITS_FETCH_SUCCESS = 'VISITS_FETCH_SUCCESS'
-export const VISITS_FETCH_FAILURE  = 'VISITS_FETCH_FAILURE'
 
 //const pendingId = 1
 const approvedId = 2
