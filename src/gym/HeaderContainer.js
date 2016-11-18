@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import Header from './Header'
-import { checkForToken } from '../auth/actions'
+import { verifyToken } from '../auth/actions'
 
 const mapStateToProps = (state) => {
   return {}
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     checkForToken: () => {
-      dispatch(checkForToken())
+      dispatch(verifyToken())
     }
   }
 }
