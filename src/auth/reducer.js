@@ -17,7 +17,8 @@ const auth = (state = {
   token: '',
   email: '',
   password: '',
-  passwordConfirm: ''
+  passwordConfirm: '',
+  userId: 1
 }, action) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS:

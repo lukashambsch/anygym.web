@@ -6,7 +6,7 @@ import { routerMiddleware } from 'react-router-redux'
 import createSagaMiddleware from 'redux-saga'
 
 import reducer from './reducers'
-import visitSaga from './visit/sagas'
+import { visitSaga, createVisitSaga } from './visit/sagas'
 
 const loggerMiddleware = createLogger()
 const reduxRouterMiddleware = routerMiddleware(browserHistory)
@@ -20,3 +20,4 @@ export const store = createStore(reducer, applyMiddleware(
 ))
 
 sagaMiddleware.run(visitSaga)
+sagaMiddleware.run(createVisitSaga)

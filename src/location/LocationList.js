@@ -22,6 +22,7 @@ class LocationList extends Component {
               <LocationRow
                 key={location.gym_location_id}
                 checkIn={this.props.checkIn}
+                member={this.props.member}
                 location={location} />
             )}
           </tbody>

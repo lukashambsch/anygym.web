@@ -8,7 +8,9 @@ class LocationRow extends Component {
       <tr>
         <td>{location.location_name}</td>
         <td>
-          <button onClick={() => this.props.checkIn(location)}>Check In</button>
+          <button onClick={() =>
+            this.props.checkIn({member_id: this.props.member.user_id, gym_location_id: location.gym_location_id})
+          }>Check In</button>
         </td>
       </tr>
     )

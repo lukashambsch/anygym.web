@@ -10,6 +10,7 @@ class VisitList extends Component {
   render() {
     return (
       <div>
+        <button onClick={() => this.props.loadData()}>Refresh</button>
         <table>
           <thead>
             <tr>
