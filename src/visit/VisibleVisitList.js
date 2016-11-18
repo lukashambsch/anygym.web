@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { approveVisit, denyVisit, fetchVisits } from './actions'
+import { approveVisit, denyVisit, requestVisits } from './actions'
 import { fetchMembers } from '../member/actions'
 import { fetchStatuses } from '../status/actions'
 import VisitList from './VisitList'
@@ -38,7 +38,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(denyVisit(visit))
     },
     loadData: () => {
-      dispatch(fetchVisits())
+      dispatch(requestVisits())
       dispatch(fetchStatuses())
       dispatch(fetchMembers())
     }
