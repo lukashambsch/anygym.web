@@ -117,7 +117,7 @@ export function getToken(user) {
     return axios.post('/authenticate', user)
       .then(response => {
         dispatch(authenticateSuccess(response.data))
-        dispatch(push('/visits'))
+        dispatch(push('/gym/visits'))
       })
       .catch(err =>
         dispatch(authenticateFailure(err))
@@ -133,7 +133,7 @@ export function register(user) {
       .then(response => {
         dispatch(registerSuccess(response.data))
         dispatch(getToken(user))
-          .then(() => dispatch(push('/visits')) )
+          .then(() => dispatch(push('/gym/visits')) )
       })
       .catch(err =>
         console.log(err)
