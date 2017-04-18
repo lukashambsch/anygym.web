@@ -15,7 +15,7 @@ const reducers = combineReducers({
   statuses,
   members,
   locations,
-  routing: routerReducer
+  router: routerReducer
 })
 
 export default reducers

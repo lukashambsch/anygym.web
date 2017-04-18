@@ -1,4 +1,4 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 class App extends Component {
   componentWillMount() {
@@ -6,7 +6,11 @@ class App extends Component {
   }
 
   render() {
-    return this.props.children
+    return (
+      <div>
+        {this.props.children}
+      </div>
+    )
   }
 }
 
