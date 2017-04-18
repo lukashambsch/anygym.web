@@ -3,7 +3,7 @@ import { Route } from 'react-router'
 
 import VisibleVisitList from '../visit/VisibleVisitList'
 
-class Header extends Component {
+class GymSection extends Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class Header extends Component {
   }
 }
 
-export default Header
+export default GymSection

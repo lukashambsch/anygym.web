@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { Route, Redirect } from 'react-router'
 
 import { requireAuth } from './router'
-import GymHeaderContainer from './gym/HeaderContainer'
+import GymSectionContainer from './gym/GymSectionContainer'
 import LoginContainer from './auth/LoginContainer'
-import MemberHeaderContainer from './member/HeaderContainer'
+import MemberSectionContainer from './member/MemberSectionContainer'
 import RegisterContainer from './auth/RegisterContainer'
 
 class App extends Component {
@@ -20,8 +20,8 @@ class App extends Component {
         )}/>
         <Route path="/login" component={LoginContainer} />
         <Route path="/register" component={RegisterContainer} />
-        <Route path="/gym" component={GymHeaderContainer} onEnter={requireAuth} />
-        <Route path="/member" component={MemberHeaderContainer} onEnter={requireAuth} />
+        <Route path="/gym" component={GymSectionContainer} onEnter={requireAuth} />
+        <Route path="/member" component={MemberSectionContainer} onEnter={requireAuth} />
       </div>
     )
   }

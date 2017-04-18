@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 import { withRouter } from 'react-router'
 
-import Header from './Header'
+import MemberSection from './MemberSection'
 
 const mapStateToProps = (state) => {
   return {}
@@ -12,9 +12,9 @@ const mapDispatchToProps = (dispatch) => {
   return {}
 }
 
-const HeaderContainer = connect(
+const MemberSectionContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Header)
+)(MemberSection)
 
-export default withRouter(HeaderContainer)
+export default withRouter(MemberSectionContainer)
