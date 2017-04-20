@@ -1,5 +1,3 @@
-import locationApi from './api'
-
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
 

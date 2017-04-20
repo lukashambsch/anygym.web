@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 export const REQUEST_MEMBERS = 'REQUEST_MEMBERS'
 export const RECEIVE_MEMBERS = 'RECEIVE_MEMBERS'
 

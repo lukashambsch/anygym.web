@@ -107,19 +107,9 @@ export function verifyToken() {
 }
 
 export function login(email, password) {
-  return function(dispatch) {
-    dispatch(getToken({email: email, password: password}))
-  }
-}
-
-export function getToken(user) {
-  return function(dispatch) {
-    dispatch(requestToken(user))
-  }
+  return requestToken({email: email, password: password})
 }
 
 export function register(user) {
-  return function(dispatch) {
-    dispatch(requestRegister(user))
-  }
+  return requestRegister(user)
 }

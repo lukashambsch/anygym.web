@@ -3,6 +3,7 @@ import axios from 'axios'
 export const UPDATE_VISIT = 'UPDATE_VISIT'
 export const CREATE_VISIT = 'CREATE_VISIT'
 export const CREATE_VISIT_SUCCESS = 'CREATE_VISIT_SUCCESS'
+export const UPDATE_VISIT_SUCCESS = 'UPDATE_VISIT_SUCCESS'
 export const REQUEST_VISITS = 'REQUEST_VISITS'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
 
@@ -33,6 +34,13 @@ export const createVisitSuccess = () => {
   }
 }
 
+export const updateVisitSuccess = (visit) => {
+  return {
+    type: UPDATE_VISIT_SUCCESS,
+    visit
+  }
+}
+
 export const requestVisits = () => {
   return {
     type: REQUEST_VISITS
@@ -52,17 +60,13 @@ export function fetchVisits() {
 }
 
 export function approveVisit(visit) {
-  return function(dispatch) {
-    visit.status_id = approvedId
-    dispatch(putVisit(visit))
-  }
+  visit.status_id = approvedId
+  return updateVisit(visit)
 }
 
 export function denyVisit(visit) {
-  return function(dispatch) {
-    visit.status_id = deniedIdentityId
-    dispatch(putVisit(visit))
-  }
+  visit.status_id = deniedIdentityId
+  return updateVisit(visit)
 }
 
 export function putVisit(visit) {
