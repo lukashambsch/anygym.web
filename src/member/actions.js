@@ -18,15 +18,5 @@ export const receiveMembers = (json) => {
 }
 
 export function fetchMembers() {
-  return function(dispatch) {
-    dispatch(requestMembers())
-
-    return axios.get('http://localhost:8080/api/v1/members')
-    .then(response =>
-      dispatch(receiveMembers(response.data))
-    )
-    .catch(err =>
-      console.log(err)
-    )
-  }
+  return requestMembers()
 }

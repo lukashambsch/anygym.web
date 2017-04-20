@@ -48,17 +48,7 @@ export const receiveVisits = (json) => {
 }
 
 export function fetchVisits() {
-  return function(dispatch) {
-    dispatch(requestVisits())
-
-    return axios.get('/visits')
-      .then(response =>
-        dispatch(receiveVisits(response.data))
-      )
-      .catch(err =>
-        console.log(err)
-      )
-  }
+  return requestVisits()
 }
 
 export function approveVisit(visit) {

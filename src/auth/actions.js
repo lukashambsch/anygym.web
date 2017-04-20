@@ -62,15 +62,17 @@ export const handlePasswordConfirmChange = (event) => {
   }
 }
 
-export const requestToken = () => {
+export const requestToken = (user) => {
   return {
-    type: REQUEST_TOKEN
+    type: REQUEST_TOKEN,
+    user: user
   }
 }
 
-export const requestRegister = () => {
+export const requestRegister = (user) => {
   return {
-    type: REQUEST_REGISTER
+    type: REQUEST_REGISTER,
+    user: user
   }
 }
 
@@ -112,31 +114,12 @@ export function login(email, password) {
 
 export function getToken(user) {
   return function(dispatch) {
-    dispatch(requestToken())
-
-    return axios.post('/authenticate', user)
-      .then(response => {
-        dispatch(authenticateSuccess(response.data))
-        dispatch(push('/gym/visits'))
-      })
-      .catch(err =>
-        dispatch(authenticateFailure(err))
-      )
+    dispatch(requestToken(user))
   }
 }
 
 export function register(user) {
   return function(dispatch) {
-    dispatch(requestRegister())
-
-    return axios.post('/users', user)
-      .then(response => {
-        dispatch(registerSuccess(response.data))
-        dispatch(getToken(user))
-          .then(() => dispatch(push('/gym/visits')) )
-      })
-      .catch(err =>
-        console.log(err)
-      )
+    dispatch(requestRegister(user))
   }
 }

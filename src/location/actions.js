@@ -1,4 +1,4 @@
-import axios from 'axios'
+import locationApi from './api'
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
@@ -18,15 +18,5 @@ export const receiveLocations = (json) => {
 }
 
 export function fetchLocations() {
-  return function(dispatch) {
-    dispatch(requestLocations())
-
-    return axios.get('/gym_locations')
-      .then(response =>
-        dispatch(receiveLocations(response.data))
-      )
-      .catch(err =>
-        console.log(err)
-      )
-  }
+  return requestLocations()
 }

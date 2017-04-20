@@ -1,22 +1,12 @@
-import axios from 'axios'
 import { call, put, takeLatest } from 'redux-saga/effects'
 
+import visitApi from './api'
 import { CREATE_VISIT, REQUEST_VISITS } from './actions'
 import { receiveVisits, createVisitSuccess } from './actions'
 
-function fetchVisitsAPI() {
-  return axios.get('/visits')
-    .then(response => response.data)
-}
-
-function createVisitAPI(visit) {
-  return axios.post('/visits', visit)
-    .then(response => response.data)
-}
-
 function* createVisit(action) {
   try {
-    yield call(createVisitAPI, action.visit)
+    yield call(visitApi.createVisit, action.visit)
     yield put(createVisitSuccess())
   } catch(e) {
     console.log(e)
@@ -25,7 +15,7 @@ function* createVisit(action) {
 
 function* fetchVisits(action) {
   try {
-    const visits = yield call(fetchVisitsAPI)
+    const visits = yield call(visitApi.getVisits)
 
     yield put(receiveVisits(visits))
   } catch(e) {
