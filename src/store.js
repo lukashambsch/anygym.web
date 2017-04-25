@@ -5,11 +5,7 @@ import createSagaMiddleware from 'redux-saga'
 import createHistory from 'history/createBrowserHistory'
 
 import reducer from './reducers'
-import { visitSaga, createVisitSaga, updateVisitSaga } from './visit/sagas'
-import { getTokenSaga, registerUserSaga } from './auth/sagas'
-import { getLocationsSaga } from './location/sagas'
-import { getStatusesSaga } from './status/sagas'
-import { getMembersSaga } from './member/sagas'
+import rootSaga from './sagas'
 
 export const history = createHistory()
 const loggerMiddleware = createLogger()
@@ -22,11 +18,4 @@ export const store = createStore(reducer, applyMiddleware(
   sagaMiddleware
 ))
 
-sagaMiddleware.run(visitSaga)
-sagaMiddleware.run(createVisitSaga)
-sagaMiddleware.run(updateVisitSaga)
-sagaMiddleware.run(getLocationsSaga)
-sagaMiddleware.run(getTokenSaga)
-sagaMiddleware.run(registerUserSaga)
-sagaMiddleware.run(getStatusesSaga)
-sagaMiddleware.run(getMembersSaga)
+sagaMiddleware.run(rootSaga)

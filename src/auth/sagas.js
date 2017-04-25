@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux'
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import authApi from './api'
 import { REQUEST_TOKEN, REQUEST_REGISTER } from './actions'
@@ -27,10 +27,19 @@ function* registerUser(action) {
   }
 }
 
-export function* getTokenSaga() {
+function* getTokenSaga() {
   yield takeLatest(REQUEST_TOKEN, getToken)
 }
 
-export function* registerUserSaga() {
+function* registerUserSaga() {
   yield takeLatest(REQUEST_REGISTER, registerUser)
 }
+
+function* authSaga() {
+  yield [
+    fork(getTokenSaga),
+    fork(registerUserSaga)
+  ]
+}
+
+export default authSaga

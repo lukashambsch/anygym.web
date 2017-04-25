@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import visitApi from './api'
 import { CREATE_VISIT, UPDATE_VISIT, REQUEST_VISITS } from './actions'
@@ -32,14 +32,24 @@ function* fetchVisits(action) {
   }
 }
 
-export function* visitSaga() {
+function* getVisitsSaga() {
   yield takeLatest(REQUEST_VISITS, fetchVisits)
 }
 
-export function* createVisitSaga() {
+function* createVisitSaga() {
   yield takeLatest(CREATE_VISIT, createVisit)
 }
 
-export function* updateVisitSaga() {
+function* updateVisitSaga() {
   yield takeLatest(UPDATE_VISIT, updateVisit)
 }
+
+function* visitSaga() {
+  yield [
+    fork(getVisitsSaga),
+    fork(createVisitSaga),
+    fork(updateVisitSaga)
+  ]
+}
+
+export default visitSaga

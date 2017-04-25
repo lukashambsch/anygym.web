@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import locationApi from './api'
 import { REQUEST_LOCATIONS } from './actions'
@@ -14,6 +14,14 @@ function* getLocations(action) {
   }
 }
 
-export function* getLocationsSaga() {
+function* getLocationsSaga() {
   yield takeLatest(REQUEST_LOCATIONS, getLocations)
 }
+
+function* locationSaga() {
+  yield [
+    fork(getLocationsSaga)
+  ]
+}
+
+export default locationSaga

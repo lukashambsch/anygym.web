@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import memberApi from './api'
 import { REQUEST_MEMBERS } from './actions'
@@ -14,6 +14,14 @@ function* getMembers(action) {
   }
 }
 
-export function* getMembersSaga() {
+function* getMembersSaga() {
   yield takeLatest(REQUEST_MEMBERS, getMembers)
 }
+
+function* memberSaga() {
+  yield [
+    fork(getMembersSaga)
+  ]
+}
+
+export default memberSaga
