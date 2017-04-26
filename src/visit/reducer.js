@@ -2,12 +2,14 @@ import {
   REQUEST_VISITS,
   RECEIVE_VISITS,
   UPDATE_VISIT,
+  FAIL_VISIT_REQUEST
 } from './actions'
 
 const visits = (state = {
   isFetching: false,
   visibilityFilter: 'SHOW_ALL',
-  items: {}
+  items: {},
+  error: null
 }, action) => {
   let items = {}
   switch (action.type) {
@@ -30,6 +32,11 @@ const visits = (state = {
 
       return Object.assign({}, state, {
         items: state.items
+      })
+    case FAIL_VISIT_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: action.error
       })
     default:
       return state

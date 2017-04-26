@@ -2,14 +2,14 @@ import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import visitApi from './api'
 import { CREATE_VISIT, UPDATE_VISIT, REQUEST_VISITS } from './actions'
-import { receiveVisits, createVisitSuccess, updateVisitSuccess } from './actions'
+import { receiveVisits, createVisitSuccess, updateVisitSuccess, failVisitRequest } from './actions'
 
 function* createVisit(action) {
   try {
     yield call(visitApi.createVisit, action.visit)
     yield put(createVisitSuccess())
   } catch(e) {
-    console.log(e)
+    yield put(failVisitRequest(e))
   }
 }
 
@@ -18,7 +18,7 @@ function* updateVisit(action) {
     yield call(visitApi.updateVisit, action.visit)
     yield put(updateVisitSuccess())
   } catch(e) {
-    console.log(e)
+    yield put(failVisitRequest(e))
   }
 }
 
@@ -28,7 +28,7 @@ function* fetchVisits(action) {
 
     yield put(receiveVisits(visits))
   } catch(e) {
-    console.log(e)
+    yield put(failVisitRequest(e))
   }
 }
 

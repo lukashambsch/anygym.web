@@ -4,6 +4,7 @@ export const UPDATE_VISIT = 'UPDATE_VISIT'
 export const CREATE_VISIT = 'CREATE_VISIT'
 export const CREATE_VISIT_SUCCESS = 'CREATE_VISIT_SUCCESS'
 export const UPDATE_VISIT_SUCCESS = 'UPDATE_VISIT_SUCCESS'
+export const FAIL_VISIT_REQUEST = 'FAIL_VISIT_REQUEST'
 export const REQUEST_VISITS = 'REQUEST_VISITS'
 export const RECEIVE_VISITS = 'RECEIVE_VISITS'
 
@@ -44,6 +45,15 @@ export const updateVisitSuccess = (visit) => {
 export const requestVisits = () => {
   return {
     type: REQUEST_VISITS
+  }
+}
+
+export const failVisitRequest = (err) => {
+  console.log(err)
+
+  return {
+    type: FAIL_VISIT_REQUEST,
+    error: err
   }
 }
 

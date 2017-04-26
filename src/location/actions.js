@@ -1,5 +1,6 @@
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
+export const FAIL_LOCATION_REQUEST = 'FAIL_LOCATION_REQUEST'
 
 export const requestLocations = () => {
   return {
@@ -12,6 +13,15 @@ export const receiveLocations = (json) => {
     type: RECEIVE_LOCATIONS,
     locations: json,
     receivedAt: Date.now()
+  }
+}
+
+export const failLocationRequest = (err) => {
+  console.log(err)
+
+  return {
+    type: FAIL_LOCATION_REQUEST,
+    error: err
   }
 }
 

@@ -1,8 +1,9 @@
-import { REQUEST_LOCATIONS, RECEIVE_LOCATIONS } from './actions'
+import { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, FAIL_LOCATION_REQUEST } from './actions'
 
 const locations = (state = {
   isFetching: false,
-  items: {}
+  items: {},
+  error: null
 }, action) => {
   switch (action.type) {
     case REQUEST_LOCATIONS:
@@ -19,6 +20,11 @@ const locations = (state = {
         isFetching: false,
         items: items,
         lastUpdated: action.receivedAt
+      })
+    case FAIL_LOCATION_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: action.error
       })
     default:
       return state

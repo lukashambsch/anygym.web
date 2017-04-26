@@ -1,7 +1,8 @@
 import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import statusApi from './api'
-import { REQUEST_STATUSES, receiveStatuses } from './actions'
+import { REQUEST_STATUSES } from './actions'
+import { receiveStatuses, failStatusRequest } from './actions'
 
 function* getStatuses(action) {
   try {
@@ -9,7 +10,7 @@ function* getStatuses(action) {
 
     yield put(receiveStatuses(statuses))
   } catch(e) {
-    console.log(e)
+    yield put(failStatusRequest(e))
   }
 }
 

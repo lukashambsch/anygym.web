@@ -2,7 +2,7 @@ import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import memberApi from './api'
 import { REQUEST_MEMBERS } from './actions'
-import { receiveMembers } from './actions'
+import { receiveMembers, failMemberRequest } from './actions'
 
 function* getMembers(action) {
   try {
@@ -10,7 +10,7 @@ function* getMembers(action) {
 
     yield put(receiveMembers(members))
   } catch(e) {
-    console.log(e)
+    yield put(failMemberRequest(e))
   }
 }
 

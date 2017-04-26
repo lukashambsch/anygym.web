@@ -1,8 +1,9 @@
-import { REQUEST_STATUSES, RECEIVE_STATUSES } from './actions'
+import { REQUEST_STATUSES, FAIL_STATUS_REQUEST, RECEIVE_STATUSES } from './actions'
 
 const statuses = (state = {
   isFetching: false,
-  items: {}
+  items: {},
+  error: null
 }, action) => {
   switch (action.type) {
     case REQUEST_STATUSES:
@@ -19,6 +20,11 @@ const statuses = (state = {
         isFetching: false,
         items: items,
         lastUpdated: action.receivedAt
+      })
+    case FAIL_STATUS_REQUEST:
+      return Object.assign({}, state, {
+        isFetching: false,
+        error: action.error
       })
     default:
       return state
