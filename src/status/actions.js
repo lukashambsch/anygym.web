@@ -18,9 +18,14 @@ export const failStatusRequest = (err) => {
 }
 
 export const receiveStatuses = (json) => {
+  let items = {}
+  json.forEach((status) => {
+    items[status.status_id] = status
+  })
+
   return {
     type: RECEIVE_STATUSES,
-    statuses: json,
+    statuses: items,
     receivedAt: Date.now()
   }
 }

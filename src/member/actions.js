@@ -16,9 +16,14 @@ export const failMemberRequest = (err) => {
 }
 
 export const receiveMembers = (json) => {
+  let items = {}
+  json.forEach((member) => {
+    items[member.member_id] = member
+  })
+
   return {
     type: RECEIVE_MEMBERS,
-    members: json,
+    members: items,
     receivedAt: Date.now()
   }
 }

@@ -9,9 +9,14 @@ export const requestLocations = () => {
 }
 
 export const receiveLocations = (json) => {
+  let items = {}
+  json.forEach((location) => {
+    items[location.gym_location_id] = location
+  })
+
   return {
     type: RECEIVE_LOCATIONS,
-    locations: json,
+    locations: items,
     receivedAt: Date.now()
   }
 }

@@ -11,14 +11,9 @@ const members = (state = {
         isFetching: true,
       })
     case RECEIVE_MEMBERS:
-      let items = {}
-      action.members.forEach((member) => {
-        items[member.member_id] = member
-      })
-
       return Object.assign({}, state, {
         isFetching: false,
-        items: items,
+        items: action.members,
         lastUpdated: action.recievedAt
       })
     case FAIL_MEMBER_REQUEST:

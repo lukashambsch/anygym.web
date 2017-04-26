@@ -11,14 +11,9 @@ const statuses = (state = {
         isFetching: true
       })
     case RECEIVE_STATUSES:
-      var items = {}
-      action.statuses.forEach((status) => {
-        items[status.status_id] = status
-      })
-
       return Object.assign({}, state, {
         isFetching: false,
-        items: items,
+        items: action.statuses,
         lastUpdated: action.receivedAt
       })
     case FAIL_STATUS_REQUEST:

@@ -58,9 +58,14 @@ export const failVisitRequest = (err) => {
 }
 
 export const receiveVisits = (json) => {
+  let items = {}
+  json.forEach((visit) => {
+    items[visit.visit_id] = visit
+  })
+
   return {
     type: RECEIVE_VISITS,
-    visits: json,
+    visits: items,
     recievedAt: Date.now()
   }
 }

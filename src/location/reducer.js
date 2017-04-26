@@ -11,14 +11,9 @@ const locations = (state = {
         isFetching: true
       })
     case RECEIVE_LOCATIONS:
-      let items = {}
-      action.locations.forEach((location) => {
-        items[location.gym_location_id] = location
-      })
-
       return Object.assign({}, state, {
         isFetching: false,
-        items: items,
+        items: action.locations,
         lastUpdated: action.receivedAt
       })
     case FAIL_LOCATION_REQUEST:

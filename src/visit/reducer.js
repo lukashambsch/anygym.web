@@ -19,15 +19,9 @@ const visits = (state = {
         isFetching: true
       })
     case RECEIVE_VISITS:
-      items = Object.assign(state.items, {})
-
-      action.visits.forEach((visit) => {
-        items[visit.visit_id] = visit
-      })
-
       return Object.assign({}, state, {
         isFetching: false,
-        items: items,
+        items: action.visits,
         lastUpdated: action.recievedAt
       })
     case UPDATE_VISIT:
