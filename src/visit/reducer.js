@@ -12,12 +12,15 @@ const visits = (state = {
   error: null
 }, action) => {
   let items = {}
+
   switch (action.type) {
     case REQUEST_VISITS:
       return Object.assign({}, state, {
         isFetching: true
       })
     case RECEIVE_VISITS:
+      items = Object.assign(state.items, {})
+
       action.visits.forEach((visit) => {
         items[visit.visit_id] = visit
       })
@@ -28,10 +31,12 @@ const visits = (state = {
         lastUpdated: action.recievedAt
       })
     case UPDATE_VISIT:
-      state.items[action.visit.visit_id] = action.visit
+      items = Object.assign(state.items, {})
+
+      items[action.visit.visit_id] = action.visit
 
       return Object.assign({}, state, {
-        items: state.items
+        items: items
       })
     case FAIL_VISIT_REQUEST:
       return Object.assign({}, state, {
