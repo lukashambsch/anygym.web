@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import LocationRow from './LocationRow'
+import LocationRow from './LocationRow';
 
 class LocationList extends Component {
   componentWillMount() {
-    this.props.loadData()
+    this.props.loadData();
   }
 
   render() {
@@ -28,8 +28,8 @@ class LocationList extends Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
 
-export default LocationList
+export default LocationList;

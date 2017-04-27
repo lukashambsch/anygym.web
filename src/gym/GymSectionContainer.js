@@ -1,20 +1,20 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
 
-import GymSection from './GymSection'
+import GymSection from './GymSection';
 
 const mapStateToProps = (state) => {
-  return {}
+  return {};
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {}
+  return {};
 }
 
 const GymSectionContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(GymSection)
+)(GymSection);
 
-export default withRouter(GymSectionContainer)
+export default withRouter(GymSectionContainer);

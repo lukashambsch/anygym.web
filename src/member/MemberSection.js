@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router'
+import React, { Component } from 'react';
+import { Route } from 'react-router';
 
-import LocationListContainer from '../location/LocationListContainer'
+import LocationListContainer from '../location/LocationListContainer';
 
 class MemberSection extends Component {
   render() {
@@ -10,8 +10,8 @@ class MemberSection extends Component {
         <div>Member Section</div>
         <Route path="/member/locations" component={LocationListContainer} />
       </div>
-    )
+    );
   }
 }
 
-export default MemberSection
+export default MemberSection;

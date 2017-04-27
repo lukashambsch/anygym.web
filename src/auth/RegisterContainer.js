@@ -1,7 +1,7 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import RegisterForm from './RegisterForm'
-import { register, handleEmailChange, handlePasswordChange, handlePasswordConfirmChange } from './actions'
+import RegisterForm from './RegisterForm';
+import { register, handleEmailChange, handlePasswordChange, handlePasswordConfirmChange } from './actions';
 
 const mapStateToProps = (state) => {
   return {
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => {
     password: state.auth.password,
     passwordConfirm: state.auth.passwordConfirm,
     roles: []
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -26,12 +26,12 @@ const mapDispatchToProps = (dispatch) => {
     register: (user) => {
       dispatch(register(user))
     }
-  }
+  };
 }
 
 const RegisterContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegisterForm)
+)(RegisterForm);
 
-export default RegisterContainer
+export default RegisterContainer;

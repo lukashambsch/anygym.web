@@ -1,4 +1,4 @@
-import { REQUEST_STATUSES, FAIL_STATUS_REQUEST, RECEIVE_STATUSES } from './actions'
+import { REQUEST_STATUSES, FAIL_STATUS_REQUEST, RECEIVE_STATUSES } from './actions';
 
 const statuses = (state = {
   isFetching: false,
@@ -9,21 +9,21 @@ const statuses = (state = {
     case REQUEST_STATUSES:
       return Object.assign({}, state, {
         isFetching: true
-      })
+      });
     case RECEIVE_STATUSES:
       return Object.assign({}, state, {
         isFetching: false,
         items: action.statuses,
         lastUpdated: action.receivedAt
-      })
+      });
     case FAIL_STATUS_REQUEST:
       return Object.assign({}, state, {
         isFetching: false,
         error: action.error
-      })
+      });
     default:
-      return state
+      return state;
   }
 }
 
-export default statuses
+export default statuses;

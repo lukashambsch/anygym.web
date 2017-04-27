@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import { Route } from 'react-router'
+import React, { Component } from 'react';
+import { Route } from 'react-router';
 
-import VisibleVisitList from '../visit/VisibleVisitList'
+import VisibleVisitList from '../visit/VisibleVisitList';
 
 class GymSection extends Component {
   render() {
@@ -10,8 +10,8 @@ class GymSection extends Component {
         <div>Gym Section</div>
         <Route path="/gym/visits" component={VisibleVisitList} />
       </div>
-    )
+    );
   }
 }
 
-export default GymSection
+export default GymSection;

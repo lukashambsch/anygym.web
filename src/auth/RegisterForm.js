@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class RegisterForm extends Component {
   getUser() {
     let user = {
       email: this.props.email,
       password: this.props.password
-    }
-    return user
+    };
+    return user;
   }
 
   render() {
@@ -34,8 +34,8 @@ class RegisterForm extends Component {
         </select>
         <button onClick={() => this.props.register(this.getUser())}>Register</button>
       </div>
-    )
+    );
   }
 }
 
-export default RegisterForm
+export default RegisterForm;

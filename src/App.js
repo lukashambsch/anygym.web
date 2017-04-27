@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import { Route, Redirect } from 'react-router'
+import React, { Component } from 'react';
+import { Route, Redirect } from 'react-router';
 
-import { requireAuth } from './router'
-import GymSectionContainer from './gym/GymSectionContainer'
-import LoginContainer from './auth/LoginContainer'
-import MemberSectionContainer from './member/MemberSectionContainer'
-import RegisterContainer from './auth/RegisterContainer'
+import { requireAuth } from './router';
+import GymSectionContainer from './gym/GymSectionContainer';
+import LoginContainer from './auth/LoginContainer';
+import MemberSectionContainer from './member/MemberSectionContainer';
+import RegisterContainer from './auth/RegisterContainer';
 
 class App extends Component {
   componentWillMount() {
@@ -23,8 +23,8 @@ class App extends Component {
         <Route path="/gym" component={GymSectionContainer} onEnter={requireAuth} />
         <Route path="/member" component={MemberSectionContainer} onEnter={requireAuth} />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

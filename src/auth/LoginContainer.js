@@ -1,13 +1,13 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import LoginForm from './LoginForm'
-import { handleEmailChange, handlePasswordChange, login } from './actions'
+import LoginForm from './LoginForm';
+import { handleEmailChange, handlePasswordChange, login } from './actions';
 
 const mapStateToProps = (state) => {
   return {
     email: state.auth.email,
     password: state.auth.password
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -21,12 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     login: (email, password) => {
       dispatch(login(email, password))
     }
-  }
+  };
 }
 
 const LoginContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm)
+)(LoginForm);
 
-export default LoginContainer
+export default LoginContainer;

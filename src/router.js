@@ -1,11 +1,11 @@
-import React from 'react'
-import { ConnectedRouter } from 'react-router-redux'
-import { Provider } from 'react-redux'
-import Cookies from 'js-cookie'
+import React from 'react';
+import { ConnectedRouter } from 'react-router-redux';
+import { Provider } from 'react-redux';
+import Cookies from 'js-cookie';
 
-import AppContainer from './AppContainer'
-import { store, history } from './store'
-import config from './config'
+import AppContainer from './AppContainer';
+import { store, history } from './store';
+import config from './config';
 
 var router =
   <Provider store={store}>
@@ -13,17 +13,17 @@ var router =
       <AppContainer>
       </AppContainer>
     </ConnectedRouter>
-  </Provider>
+  </Provider>;
 
 export function requireAuth(nextState, replace) {
-  let token = Cookies.get(config.tokenKey)
+  let token = Cookies.get(config.tokenKey);
 
   if (!token) {
     replace({
       pathname: 'login',
       state: { nextPathname: nextState.location.pathname }
-    })
+    });
   }
 }
 
-export default router
+export default router;

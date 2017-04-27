@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class LocationRow extends Component {
   render() {
-    let location = this.props.location
+    let location = this.props.location;
 
     return (
       <tr>
@@ -13,8 +13,8 @@ class LocationRow extends Component {
           }>Check In</button>
         </td>
       </tr>
-    )
+    );
   }
 }
 
-export default LocationRow
+export default LocationRow;

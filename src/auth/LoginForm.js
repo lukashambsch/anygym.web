@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 class LoginForm extends Component {
   render() {
@@ -16,8 +16,8 @@ class LoginForm extends Component {
         />
         <button onClick={() => this.props.login(this.props.email, this.props.password)}>Login</button>
       </div>
-    )
+    );
   }
 }
 
-export default LoginForm
+export default LoginForm;

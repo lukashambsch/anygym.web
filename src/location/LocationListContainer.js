@@ -1,15 +1,15 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 
-import { fetchLocations } from './actions'
-import { createVisit } from '../visit/actions'
-import LocationList from './LocationList'
+import { fetchLocations } from './actions';
+import { createVisit } from '../visit/actions';
+import LocationList from './LocationList';
 
 const mapStateToProps = (state) => {
-  let locations = Object.keys(state.locations.items).map((key) => state.locations.items[key])
+  let locations = Object.keys(state.locations.items).map((key) => state.locations.items[key]);
   return {
     member: { user_id: state.auth.userId },
     locations: locations
-  }
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
@@ -20,12 +20,12 @@ const mapDispatchToProps = (dispatch) => {
     loadData: () => {
       dispatch(fetchLocations())
     }
-  }
+  };
 }
 
 const LocationListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LocationList)
+)(LocationList);
 
-export default LocationListContainer
+export default LocationListContainer;
