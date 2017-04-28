@@ -1,14 +1,14 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { shallow } from 'enzyme'
-import { expect } from 'chai'
+import React from 'react';
+import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
+import { expect } from 'chai';
 
-import VisitList from '../../src/visit/VisitList'
-import { visits, statuses, members } from '../mock-data'
+import VisitList from '../../src/visit/VisitList';
+import { visits, statuses, members } from '../mock-data';
 
 
 describe('VisitList', () => {
-  let props
+  let props;
 
   beforeEach(() => {
     props = {
@@ -18,14 +18,14 @@ describe('VisitList', () => {
       onApproveClick: () => {},
       onDenyClick: () => {},
       visits: visits
-    }
+    };
 
   });
 
   it('should have 3 VisitRow components', () => {
-    const wrapper = shallow(<VisitList {...props} />)
-    const rows = wrapper.find('VisitRow')
-    expect(rows).to.have.length(3)
-  })
+    const wrapper = shallow(<VisitList {...props} />);
+    const rows = wrapper.find('VisitRow');
+    expect(rows).to.have.length(3);
+  });
 
-})
+});

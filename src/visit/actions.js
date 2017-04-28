@@ -13,14 +13,14 @@ const approvedId = 2;
 const deniedIdentityId = 3;
 //const deniedBannedId = 4;
 
-export const updateVisit = (visit) => {
+export function updateVisit(visit) {
   return {
     type: UPDATE_VISIT,
     visit
   };
 }
 
-export const createVisit = (visit) => {
+export function createVisit(visit) {
   visit.status_id = pendingId;
 
   return {
@@ -29,26 +29,26 @@ export const createVisit = (visit) => {
   };
 }
 
-export const createVisitSuccess = () => {
+export function createVisitSuccess() {
   return {
     type: CREATE_VISIT_SUCCESS
   };
 }
 
-export const updateVisitSuccess = (visit) => {
+export function updateVisitSuccess(visit) {
   return {
     type: UPDATE_VISIT_SUCCESS,
     visit
   };
 }
 
-export const requestVisits = () => {
+export function requestVisits() {
   return {
     type: REQUEST_VISITS
   };
 }
 
-export const failVisitRequest = (err) => {
+export function failVisitRequest(err) {
   console.log(err);
 
   return {
@@ -57,7 +57,7 @@ export const failVisitRequest = (err) => {
   };
 }
 
-export const receiveVisits = (json) => {
+export function receiveVisits(json) {
   let items = {};
   json.forEach((visit) => {
     items[visit.visit_id] = visit
@@ -87,11 +87,11 @@ export function denyVisit(visit) {
 export function putVisit(visit) {
   return function(dispatch) {
     return axios.put(`/visits/${visit.visit_id}`, visit)
-      .then(response =>
+      .then(response => {
         dispatch(updateVisit(response.data));
-      )
-      .catch(err =>
+      })
+      .catch(err => {
         console.log(err);
-      )
+      });
   }
 }

@@ -2,13 +2,13 @@ export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS'
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS'
 export const FAIL_LOCATION_REQUEST = 'FAIL_LOCATION_REQUEST'
 
-export const requestLocations = () => {
+export function requestLocations() {
   return {
     type: REQUEST_LOCATIONS
   }
 }
 
-export const receiveLocations = (json) => {
+export function receiveLocations(json) {
   let items = {}
   json.forEach((location) => {
     items[location.gym_location_id] = location
@@ -21,7 +21,7 @@ export const receiveLocations = (json) => {
   }
 }
 
-export const failLocationRequest = (err) => {
+export function failLocationRequest(err) {
   console.log(err)
 
   return {

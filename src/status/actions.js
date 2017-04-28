@@ -2,13 +2,13 @@ export const REQUEST_STATUSES = 'REQUEST_STATUSES';
 export const FAIL_STATUS_REQUEST = 'FAIL_STATUS_REQUEST';
 export const RECEIVE_STATUSES = 'RECEIVE_STATUSES';
 
-export const requestStatuses = () => {
+export function requestStatuses() {
   return {
     type: REQUEST_STATUSES
   };
 }
 
-export const failStatusRequest = (err) => {
+export function failStatusRequest(err) {
   console.log(err);
 
   return {
@@ -17,7 +17,7 @@ export const failStatusRequest = (err) => {
   };
 }
 
-export const receiveStatuses = (json) => {
+export function receiveStatuses(json) {
   let items = {};
   json.forEach((status) => {
     items[status.status_id] = status

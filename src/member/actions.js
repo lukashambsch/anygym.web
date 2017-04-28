@@ -2,20 +2,20 @@ export const REQUEST_MEMBERS = 'REQUEST_MEMBERS';
 export const RECEIVE_MEMBERS = 'RECEIVE_MEMBERS';
 export const FAIL_MEMBER_REQUEST = 'FAIL_MEMBER_REQUEST';
 
-export const requestMembers = () => {
+export function requestMembers() {
   return {
     type: REQUEST_MEMBERS
   };
 }
 
-export const failMemberRequest = (err) => {
+export function failMemberRequest(err) {
   return {
     type: FAIL_MEMBER_REQUEST,
     error: err
   };
 }
 
-export const receiveMembers = (json) => {
+export function receiveMembers(json) {
   let items = {};
   json.forEach((member) => {
     items[member.member_id] = member

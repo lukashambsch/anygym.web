@@ -15,7 +15,7 @@ export const CHECK_FOR_TOKEN = 'CHECK_FOR_TOKEN';
 export const REQUEST_REGISTER = 'REQUEST_REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
-export const authenticateSuccess = (token) => {
+export function authenticateSuccess(token) {
   let authHeader = `Bearer ${token}`;
   axios.defaults.headers.common['Authorization'] = authHeader;
   Cookies.set(config.tokenKey, token);
@@ -26,13 +26,13 @@ export const authenticateSuccess = (token) => {
   };
 }
 
-export const registerSuccess = () => {
+export function registerSuccess() {
   return {
     type: REGISTER_SUCCESS
   };
 }
 
-export const authenticateFailure = (err) => {
+export function authenticateFailure(err) {
   delete axios.defaults.headers.common['Authorization'];
 
   return {
@@ -41,42 +41,42 @@ export const authenticateFailure = (err) => {
   };
 }
 
-export const handleEmailChange = (event) => {
+export function handleEmailChange(event) {
   return {
     type: HANDLE_EMAIL_CHANGE,
     email: event.target.value
   };
 }
 
-export const handlePasswordChange = (event) => {
+export function handlePasswordChange(event) {
   return {
     type: HANDLE_PASSWORD_CHANGE,
     password: event.target.value
   };
 }
 
-export const handlePasswordConfirmChange = (event) => {
+export function handlePasswordConfirmChange(event) {
   return {
     type: HANDLE_PASSWORD_CONFIRM_CHANGE,
     passwordConfirm: event.target.value
   };
 }
 
-export const requestToken = (user) => {
+export function requestToken(user) {
   return {
     type: REQUEST_TOKEN,
     user: user
   };
 }
 
-export const requestRegister = (user) => {
+export function requestRegister(user) {
   return {
     type: REQUEST_REGISTER,
     user: user
   };
 }
 
-export const checkForToken = () => {
+export function checkForToken() {
   let token = Cookies.get(config.tokenKey);
 
   if (token) {
