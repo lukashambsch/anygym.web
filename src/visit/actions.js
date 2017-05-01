@@ -1,4 +1,6 @@
+// @flow
 import axios from 'axios';
+import type { Visit } from './types';
 
 export const UPDATE_VISIT = 'UPDATE_VISIT';
 export const CREATE_VISIT = 'CREATE_VISIT';
@@ -8,19 +10,19 @@ export const FAIL_VISIT_REQUEST = 'FAIL_VISIT_REQUEST';
 export const REQUEST_VISITS = 'REQUEST_VISITS';
 export const RECEIVE_VISITS = 'RECEIVE_VISITS';
 
-const pendingId = 1;
-const approvedId = 2;
-const deniedIdentityId = 3;
+const pendingId: number = 1;
+const approvedId: number = 2;
+const deniedIdentityId: number = 3;
 //const deniedBannedId = 4;
 
-export function updateVisit(visit) {
+export function updateVisit(visit: Visit) {
   return {
     type: UPDATE_VISIT,
     visit
   };
 }
 
-export function createVisit(visit) {
+export function createVisit(visit: Visit) {
   visit.status_id = pendingId;
 
   return {
@@ -35,10 +37,9 @@ export function createVisitSuccess() {
   };
 }
 
-export function updateVisitSuccess(visit) {
+export function updateVisitSuccess() {
   return {
-    type: UPDATE_VISIT_SUCCESS,
-    visit
+    type: UPDATE_VISIT_SUCCESS
   };
 }
 
@@ -48,7 +49,7 @@ export function requestVisits() {
   };
 }
 
-export function failVisitRequest(err) {
+export function failVisitRequest(err: Error) {
   console.log(err);
 
   return {
@@ -57,7 +58,7 @@ export function failVisitRequest(err) {
   };
 }
 
-export function receiveVisits(json) {
+export function receiveVisits(json: Object) {
   let items = {};
   json.forEach((visit) => {
     items[visit.visit_id] = visit
@@ -74,18 +75,18 @@ export function fetchVisits() {
   return requestVisits();
 }
 
-export function approveVisit(visit) {
+export function approveVisit(visit: Visit) {
   visit.status_id = approvedId;
   return updateVisit(visit);
 }
 
-export function denyVisit(visit) {
+export function denyVisit(visit: Visit) {
   visit.status_id = deniedIdentityId;
   return updateVisit(visit);
 }
 
-export function putVisit(visit) {
-  return function(dispatch) {
+export function putVisit(visit: Visit) {
+  return function(dispatch: Function) {
     return axios.put(`/visits/${visit.visit_id}`, visit)
       .then(response => {
         dispatch(updateVisit(response.data));

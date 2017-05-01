@@ -1,6 +1,13 @@
+// @flow
 import React, { Component } from 'react';
 
 class LocationRow extends Component {
+  props: {
+    location: Object,
+    checkIn: Function,
+    member: Object
+  };
+
   render() {
     let location = this.props.location;
 
