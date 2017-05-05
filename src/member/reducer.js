@@ -1,10 +1,19 @@
+// @flow
 import { REQUEST_MEMBERS, RECEIVE_MEMBERS, FAIL_MEMBER_REQUEST } from './actions';
 
-const members = (state = {
+type State = {
+  isFetching: boolean;
+  items: Object;
+  error: ?Error;
+};
+
+export const initialState: State = {
   isFetching: false,
   items: {},
   error: null
-}, action) => {
+};
+
+const members = (state: State = initialState, action: Object) => {
   switch (action.type) {
     case REQUEST_MEMBERS:
       return Object.assign({}, state, {
@@ -24,6 +33,6 @@ const members = (state = {
     default:
       return state;
   }
-}
+};
 
 export default members;

@@ -1,14 +1,16 @@
+// @flow
 import { connect } from 'react-redux';
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 import { withRouter } from 'react-router';
 
 import MemberSection from './MemberSection';
+import type { MemberSectionStateProps, MemberSectionDispatchProps } from './MemberSection';
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state: Object): MemberSectionStateProps {
   return {};
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch: Function): MemberSectionDispatchProps {
   return {};
 }
 

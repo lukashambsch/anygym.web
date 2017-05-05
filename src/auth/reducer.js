@@ -1,3 +1,4 @@
+// @flow
 import {
   SET_AUTH_SUCCESS,
   SET_AUTH_FAILURE,
@@ -10,7 +11,18 @@ import {
   REGISTER_SUCCESS
 } from './actions';
 
-const auth = (state = {
+type State = {
+  isAuthenticating: boolean;
+  isRegistering: boolean;
+  authenticated: boolean;
+  token: string;
+  email: string;
+  password: string;
+  passwordConfirm: string;
+  userId: number;
+};
+
+export const initialState: State = {
   isAuthenticating: false,
   isRegistering: true,
   authenticated: false,
@@ -18,8 +30,10 @@ const auth = (state = {
   email: '',
   password: '',
   passwordConfirm: '',
-  userId: 1
-}, action) => {
+  userId: 0
+};
+
+const auth = (state: State = initialState, action: Object) => {
   switch (action.type) {
     case SET_AUTH_SUCCESS:
       return Object.assign({}, state, {

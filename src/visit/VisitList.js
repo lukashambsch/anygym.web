@@ -1,10 +1,28 @@
-import React, { Component } from 'react'
+// @flow
+import React, { Component } from 'react';
 
-import VisitRow from './VisitRow'
+import VisitRow from './VisitRow';
+import type { Visit } from './types';
+import type { Member } from '../member/types';
+import type { Status } from '../status/types';
+
+export type VisitListStateProps = {
+  visits: Array<Visit>;
+  members: Array<Member>;
+  statuses: Array<Status>;
+};
+
+export type VisitListDispatchProps = {
+  loadData: Function;
+  onApproveClick: Function;
+  onDenyClick: Function;
+};
 
 class VisitList extends Component {
+  props: VisitListStateProps & VisitListDispatchProps;
+
   componentWillMount() {
-    this.props.loadData()
+    this.props.loadData();
   }
 
   render() {
@@ -34,8 +52,8 @@ class VisitList extends Component {
           </tbody>
         </table>
       </div>
-    )
+    );
   }
 }
 
-export default VisitList
+export default VisitList;

@@ -1,3 +1,4 @@
+// @flow
 import { push } from 'react-router-redux';
 import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
@@ -35,7 +36,7 @@ function* registerUserSaga() {
   yield takeLatest(REQUEST_REGISTER, registerUser);
 }
 
-function* authSaga() {
+function* authSaga(): any {
   yield [
     fork(getTokenSaga),
     fork(registerUserSaga)

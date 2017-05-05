@@ -1,24 +1,26 @@
+// @flow
 import { connect } from 'react-redux';
 
+import type { LoginStateProps, LoginDispatchProps } from './LoginForm';
 import LoginForm from './LoginForm';
 import { handleEmailChange, handlePasswordChange, login } from './actions';
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state: Object): LoginStateProps {
   return {
     email: state.auth.email,
     password: state.auth.password
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch: Function): LoginDispatchProps {
   return {
-    onEmailChange: (event) => {
+    onEmailChange: (event: SyntheticInputEvent) => {
       dispatch(handleEmailChange(event))
     },
-    onPasswordChange: (event) => {
+    onPasswordChange: (event: SyntheticInputEvent) => {
       dispatch(handlePasswordChange(event))
     },
-    login: (email, password) => {
+    login: (email: string, password: string) => {
       dispatch(login(email, password))
     }
   };

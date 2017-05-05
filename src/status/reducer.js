@@ -1,10 +1,19 @@
+// @flow
 import { REQUEST_STATUSES, FAIL_STATUS_REQUEST, RECEIVE_STATUSES } from './actions';
 
-const statuses = (state = {
+type State = {
+  isFetching: boolean;
+  items: Object;
+  error: ?Error;
+};
+
+export const initialState: State = {
   isFetching: false,
   items: {},
   error: null
-}, action) => {
+};
+
+const statuses = (state: State = initialState, action: Object) => {
   switch (action.type) {
     case REQUEST_STATUSES:
       return Object.assign({}, state, {

@@ -1,12 +1,13 @@
-import axios from 'axios'
+// @flow
+import axios from 'axios';
 
-const root = '/gym_locations'
+const root = '/gym_locations';
 
-const locationApi = {
+let locationApi = {
   getLocations: function() {
     return axios.get(root)
-      .then(response => response.data)
+      .then(response => response.data);
   }
-}
+};
 
-export default locationApi
+export default locationApi;

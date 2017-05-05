@@ -1,3 +1,4 @@
+// @flow
 import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import locationApi from './api'
@@ -18,7 +19,7 @@ function* getLocationsSaga() {
   yield takeLatest(REQUEST_LOCATIONS, getLocations)
 }
 
-function* locationSaga() {
+function* locationSaga(): any {
   yield [
     fork(getLocationsSaga)
   ]

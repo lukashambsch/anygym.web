@@ -1,8 +1,27 @@
+// @flow
 import React, { Component } from 'react';
 
+import type { User, Role } from './types';
+
+export type RegistrationStateProps = {
+  email: string;
+  password: string;
+  passwordConfirm: string;
+  roles: Array<Role>;
+};
+
+export type RegistrationDispatchProps = {
+  onEmailChange: Function;
+  onPasswordChange: Function;
+  onPasswordConfirmChange: Function;
+  register: Function;
+};
+
 class RegisterForm extends Component {
-  getUser() {
-    let user = {
+  props: RegistrationStateProps & RegistrationDispatchProps;
+
+  getUser(): User {
+    let user: User = {
       email: this.props.email,
       password: this.props.password
     };

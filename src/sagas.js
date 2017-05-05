@@ -1,19 +1,20 @@
-import { fork } from 'redux-saga/effects'
+// @flow
+import { fork } from 'redux-saga/effects';
 
-import authSaga from './auth/sagas'
-import visitSaga from './visit/sagas'
-import locationSaga from './location/sagas'
-import statusSaga from './status/sagas'
-import memberSaga from './member/sagas'
+import authSaga from './auth/sagas';
+import visitSaga from './visit/sagas';
+import locationSaga from './location/sagas';
+import statusSaga from './status/sagas';
+import memberSaga from './member/sagas';
 
-function* rootSaga() {
+function* rootSaga(): any {
   yield [
     fork(authSaga),
     fork(visitSaga),
     fork(locationSaga),
     fork(statusSaga),
     fork(memberSaga)
-  ]
+  ];
 }
 
-export default rootSaga
+export default rootSaga;

@@ -1,6 +1,19 @@
+// @flow
 import React, { Component } from 'react'
 
+import type { Visit } from '../visit/types';
+import type { Member } from '../member/types';
+import type { Status } from '../status/types';
+
 class VisitRow extends Component {
+  props: {
+    members: Array<Member>;
+    statuses: Array<Status>;
+    approve: Function;
+    deny: Function;
+    visit: Visit;
+  };
+
   deny() {
     return this.props.deny;
   }

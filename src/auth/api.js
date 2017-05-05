@@ -1,11 +1,14 @@
+// @flow
 import axios from 'axios';
 
-const authApi = {
-  getToken: function(user) {
+import type { User } from './types';
+
+const authApi: Object = {
+  getToken: function(user: User) {
     return axios.post('/authenticate', user)
       .then(response => response.data);
   },
-  register: function(user) {
+  register: function(user: User) {
     return axios.post('/users', user)
       .then(response => response.data);
   }

@@ -1,8 +1,10 @@
+// @flow
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import { push } from 'react-router-redux';
 
 import config from '../config';
+import type { User } from './types';
 
 export const GET_TOKEN = 'GET_TOKEN';
 export const SET_AUTH_SUCCESS = 'SET_AUTH_SUCCESS';
@@ -15,8 +17,8 @@ export const CHECK_FOR_TOKEN = 'CHECK_FOR_TOKEN';
 export const REQUEST_REGISTER = 'REQUEST_REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
-export function authenticateSuccess(token) {
-  let authHeader = `Bearer ${token}`;
+export function authenticateSuccess(token: string) {
+  let authHeader: string = `Bearer ${token}`;
   axios.defaults.headers.common['Authorization'] = authHeader;
   Cookies.set(config.tokenKey, token);
 
@@ -32,7 +34,7 @@ export function registerSuccess() {
   };
 }
 
-export function authenticateFailure(err) {
+export function authenticateFailure(err: Error) {
   delete axios.defaults.headers.common['Authorization'];
 
   return {
@@ -41,35 +43,35 @@ export function authenticateFailure(err) {
   };
 }
 
-export function handleEmailChange(event) {
+export function handleEmailChange(event: SyntheticInputEvent) {
   return {
     type: HANDLE_EMAIL_CHANGE,
     email: event.target.value
   };
 }
 
-export function handlePasswordChange(event) {
+export function handlePasswordChange(event: SyntheticInputEvent) {
   return {
     type: HANDLE_PASSWORD_CHANGE,
     password: event.target.value
   };
 }
 
-export function handlePasswordConfirmChange(event) {
+export function handlePasswordConfirmChange(event: SyntheticInputEvent) {
   return {
     type: HANDLE_PASSWORD_CONFIRM_CHANGE,
     passwordConfirm: event.target.value
   };
 }
 
-export function requestToken(user) {
+export function requestToken(user: User) {
   return {
     type: REQUEST_TOKEN,
     user: user
   };
 }
 
-export function requestRegister(user) {
+export function requestRegister(user: User) {
   return {
     type: REQUEST_REGISTER,
     user: user
@@ -77,10 +79,10 @@ export function requestRegister(user) {
 }
 
 export function checkForToken() {
-  let token = Cookies.get(config.tokenKey);
+  let token: string = Cookies.get(config.tokenKey);
 
   if (token) {
-    let authHeader = `Bearer ${token}`
+    let authHeader: string = `Bearer ${token}`;
     axios.defaults.headers.common['Authorization'] = authHeader;
   } else {
     delete axios.defaults.headers.common['Authorization'];
@@ -94,22 +96,22 @@ export function checkForToken() {
 }
 
 export function verifyToken() {
-  return function(dispatch) {
-    let token = Cookies.get(config.tokenKey);
+  return function(dispatch: Function) {
+    let token: string = Cookies.get(config.tokenKey);
 
     if (token) {
       dispatch(authenticateSuccess(token));
     } else {
-      dispatch(authenticateFailure('No token present'));
+      dispatch(authenticateFailure(Error('No token present')));
       dispatch(push('/login'));
     }
   }
 }
 
-export function login(email, password) {
+export function login(email: string, password: string) {
   return requestToken({email: email, password: password});
 }
 
-export function register(user) {
+export function register(user: User) {
   return requestRegister(user);
 }

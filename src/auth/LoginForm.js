@@ -1,6 +1,20 @@
+// @flow
 import React, { Component } from 'react';
 
+export type LoginStateProps = {
+  email: string;
+  password: string;
+};
+
+export type LoginDispatchProps = {
+  onEmailChange: Function;
+  onPasswordChange: Function;
+  login: Function;
+};
+
 class LoginForm extends Component {
+  props: LoginStateProps & LoginDispatchProps;
+
   render() {
     return (
       <div>

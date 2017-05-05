@@ -1,9 +1,11 @@
+// @flow
 import { connect } from 'react-redux';
 
+import type { RegistrationStateProps, RegistrationDispatchProps } from './RegisterForm';
 import RegisterForm from './RegisterForm';
 import { register, handleEmailChange, handlePasswordChange, handlePasswordConfirmChange } from './actions';
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state: Object): RegistrationStateProps {
   return {
     email: state.auth.email,
     password: state.auth.password,
@@ -12,7 +14,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch: Function): RegistrationDispatchProps {
   return {
     onEmailChange: (event) => {
       dispatch(handleEmailChange(event))

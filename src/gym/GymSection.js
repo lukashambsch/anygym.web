@@ -3,7 +3,17 @@ import { Route } from 'react-router';
 
 import VisibleVisitList from '../visit/VisibleVisitList';
 
+export type GymSectionStateProps = {
+
+};
+
+export type GymSectionDispatchProps = {
+
+};
+
 class GymSection extends Component {
+  props: GymSectionStateProps & GymSectionDispatchProps;
+
   render() {
     return (
       <div>

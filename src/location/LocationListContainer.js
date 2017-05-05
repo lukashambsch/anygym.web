@@ -5,8 +5,9 @@ import { fetchLocations } from './actions';
 import { createVisit } from '../visit/actions';
 import LocationList from './LocationList';
 import type { Visit } from '../visit/types';
+import type { LocationListStateProps, LocationListDispatchProps } from '../member/types';
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state: Object): LocationListStateProps {
   let locations = Object.keys(state.locations.items).map((key) => state.locations.items[key]);
 
   return {
@@ -15,7 +16,7 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch: Function): LocationListDispatchProps {
   return {
     checkIn: (visit: Visit) => {
       dispatch(createVisit(visit))

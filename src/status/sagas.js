@@ -1,3 +1,4 @@
+// @flow
 import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
 import statusApi from './api';
@@ -18,7 +19,7 @@ function* getStatusesSaga() {
   yield takeLatest(REQUEST_STATUSES, getStatuses);
 }
 
-function* statusSaga() {
+function* statusSaga(): any {
   yield [
     fork(getStatusesSaga)
   ];

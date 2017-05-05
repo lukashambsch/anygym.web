@@ -1,3 +1,4 @@
+// @flow
 import { connect } from 'react-redux';
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 import { withRouter } from 'react-router';

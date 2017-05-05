@@ -1,8 +1,23 @@
+// @flow
 import React, { Component } from 'react';
 
 import LocationRow from './LocationRow';
+import type { GymLocation } from './types';
+import type { Member } from '../member/types';
+
+export type LocationListStateProps = {
+  location: Array<GymLocation>;
+  member: Member;
+};
+
+export type LocationListDispatchProps = {
+  checkIn: Function;
+  loadData: Function;
+};
 
 class LocationList extends Component {
+  props: LocationListStateProps & LocationListDispatchProps;
+
   componentWillMount() {
     this.props.loadData();
   }

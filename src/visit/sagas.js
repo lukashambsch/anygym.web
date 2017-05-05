@@ -1,3 +1,4 @@
+// @flow
 import { call, put, takeLatest, fork } from 'redux-saga/effects'
 
 import visitApi from './api';
@@ -44,7 +45,7 @@ function* updateVisitSaga() {
   yield takeLatest(UPDATE_VISIT, updateVisit);
 }
 
-function* visitSaga() {
+function* visitSaga(): any {
   yield [
     fork(getVisitsSaga),
     fork(createVisitSaga),

@@ -1,3 +1,4 @@
+// @flow
 import {
   REQUEST_VISITS,
   RECEIVE_VISITS,
@@ -5,12 +6,21 @@ import {
   FAIL_VISIT_REQUEST
 } from './actions';
 
-const visits = (state = {
+type State = {
+  isFetching: boolean;
+  visibilityFilter: string;
+  items: Object;
+  error: ?Error;
+};
+
+export const initialState: State = {
   isFetching: false,
   visibilityFilter: 'SHOW_ALL',
   items: {},
   error: null
-}, action) => {
+};
+
+const visits = (state: State = initialState, action: Object) => {
   let items = {};
 
   switch (action.type) {

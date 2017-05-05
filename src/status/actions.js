@@ -1,3 +1,6 @@
+// @flow
+import type { Status } from './types';
+
 export const REQUEST_STATUSES = 'REQUEST_STATUSES';
 export const FAIL_STATUS_REQUEST = 'FAIL_STATUS_REQUEST';
 export const RECEIVE_STATUSES = 'RECEIVE_STATUSES';
@@ -8,7 +11,7 @@ export function requestStatuses() {
   };
 }
 
-export function failStatusRequest(err) {
+export function failStatusRequest(err: Error) {
   console.log(err);
 
   return {
@@ -17,8 +20,8 @@ export function failStatusRequest(err) {
   };
 }
 
-export function receiveStatuses(json) {
-  let items = {};
+export function receiveStatuses(json: Array<Status>) {
+  let items: Object = {};
   json.forEach((status) => {
     items[status.status_id] = status
   });

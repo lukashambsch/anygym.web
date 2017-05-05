@@ -1,11 +1,14 @@
+// @flow
 import { connect } from 'react-redux';
 
 import { approveVisit, denyVisit, requestVisits } from './actions';
 import { fetchMembers } from '../member/actions';
 import { fetchStatuses } from '../status/actions';
 import VisitList from './VisitList';
+import type { VisitListStateProps, VisitListDispatchProps } from './VisitList';
+import type { Visit } from './types';
 
-const getVisibleVisits = (visits, filter) => {
+function getVisibleVisits(visits: Array<Visit>, filter: string): Array<any> {
   switch (filter) {
     case 'SHOW_ALL':
       return visits;
@@ -20,8 +23,9 @@ const getVisibleVisits = (visits, filter) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  let visits = Object.keys(state.visits.items).map((key) => state.visits.items[key]);
+function mapStateToProps(state: Object): VisitListStateProps {
+  let visits: Array<Visit> = Object.keys(state.visits.items).map((key) => state.visits.items[key]);
+
   return {
     visits: getVisibleVisits(visits, state.visits.visibilityFilter),
     statuses: state.statuses.items,
@@ -29,12 +33,12 @@ const mapStateToProps = (state) => {
   };
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch): VisitListDispatchProps {
   return {
-    onApproveClick: (visit) => {
+    onApproveClick: (visit: Visit) => {
       dispatch(approveVisit(visit));
     },
-    onDenyClick: (visit) => {
+    onDenyClick: (visit: Visit) => {
       dispatch(denyVisit(visit));
     },
     loadData: () => {
