@@ -33,7 +33,7 @@ export const initialState: State = {
   userId: 0
 };
 
-const auth = (state: State = initialState, action: Object) => {
+function auth (state: State = initialState, action: Object) {
   switch (action.type) {
     case SET_AUTH_SUCCESS:
       return Object.assign({}, state, {

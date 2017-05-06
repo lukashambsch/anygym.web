@@ -1,5 +1,4 @@
 // @flow
-import axios from 'axios';
 import type { Visit } from './types';
 
 export const UPDATE_VISIT = 'UPDATE_VISIT';
@@ -18,7 +17,7 @@ const deniedIdentityId: number = 3;
 export function updateVisit(visit: Visit) {
   return {
     type: UPDATE_VISIT,
-    visit
+    visit: visit
   };
 }
 
@@ -27,7 +26,7 @@ export function createVisit(visit: Visit) {
 
   return {
     type: CREATE_VISIT,
-    visit
+    visit: visit
   };
 }
 
@@ -58,8 +57,8 @@ export function failVisitRequest(err: Error) {
   };
 }
 
-export function receiveVisits(json: Object) {
-  let items = {};
+export function receiveVisits(json: Array<Visit>) {
+  let items: Object = {};
   json.forEach((visit) => {
     items[visit.visit_id] = visit
   });
@@ -83,16 +82,4 @@ export function approveVisit(visit: Visit) {
 export function denyVisit(visit: Visit) {
   visit.status_id = deniedIdentityId;
   return updateVisit(visit);
-}
-
-export function putVisit(visit: Visit) {
-  return function(dispatch: Function) {
-    return axios.put(`/visits/${visit.visit_id}`, visit)
-      .then(response => {
-        dispatch(updateVisit(response.data));
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }
 }
