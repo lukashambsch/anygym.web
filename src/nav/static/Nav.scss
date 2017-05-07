@@ -1,0 +1,21 @@
+nav {
+  ul {
+    display: block;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      height: 100px;
+      width: 30%;
+      vertical-align: middle;
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+}

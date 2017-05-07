@@ -8,6 +8,8 @@ import LoginContainer from './auth/LoginContainer';
 import MemberSectionContainer from './member/MemberSectionContainer';
 import RegisterContainer from './auth/RegisterContainer';
 
+import './App.css';
+
 class App extends Component {
   componentWillMount() {
     this.props.checkForToken();
