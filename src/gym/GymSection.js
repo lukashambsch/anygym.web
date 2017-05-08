@@ -16,7 +16,7 @@ export type GymSectionDispatchProps = {
 class GymSection extends Component {
   props: GymSectionStateProps & GymSectionDispatchProps;
 
-  render(match: any) {
+  render() {
     return (
       <div>
         <Nav />

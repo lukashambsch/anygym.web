@@ -14,8 +14,7 @@ export type MemberSectionDispatchProps = {
 class MemberSection extends Component {
   props: MemberSectionStateProps & MemberSectionDispatchProps;
 
-  render(match: any) {
-    console.log(match);
+  render() {
     return (
       <div>
         <Nav />
