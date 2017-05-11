@@ -6,7 +6,7 @@ import authApi from './api';
 import { REQUEST_TOKEN, REQUEST_REGISTER } from './actions';
 import { requestToken, registerSuccess, authenticateSuccess } from './actions';
 
-function* getToken(action) {
+export function* getToken(action) {
   try {
     const token = yield call(authApi.getToken, action.user);
 
@@ -17,7 +17,7 @@ function* getToken(action) {
   }
 }
 
-function* registerUser(action) {
+export function* registerUser(action) {
   try {
     const token = yield call(authApi.register, action.user);
 
@@ -28,11 +28,11 @@ function* registerUser(action) {
   }
 }
 
-function* getTokenSaga() {
+export function* getTokenSaga() {
   yield takeLatest(REQUEST_TOKEN, getToken);
 }
 
-function* registerUserSaga() {
+export function* registerUserSaga() {
   yield takeLatest(REQUEST_REGISTER, registerUser);
 }
 

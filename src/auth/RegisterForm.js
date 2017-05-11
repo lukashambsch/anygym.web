@@ -48,7 +48,7 @@ class RegisterForm extends Component {
         />
         <select name="role">
           {this.props.roles.map(role =>
-            <option value={role.role_id}>{role.role_name}</option>
+            <option key={role.role_id} value={role.role_id}>{role.role_name}</option>
           )}
         </select>
         <button onClick={() => this.props.register(this.getUser())}>Register</button>
