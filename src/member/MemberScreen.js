@@ -5,24 +5,24 @@ import { Route } from 'react-router';
 import Nav from '../nav/Nav';
 import LocationListContainer from '../location/LocationListContainer';
 
-export type MemberSectionStateProps = {
+export type MemberScreenStateProps = {
 };
 
-export type MemberSectionDispatchProps = {
+export type MemberScreenDispatchProps = {
 };
 
-class MemberSection extends Component {
-  props: MemberSectionStateProps & MemberSectionDispatchProps;
+class MemberScreen extends Component {
+  props: MemberScreenStateProps & MemberScreenDispatchProps;
 
   render() {
     return (
       <div>
         <Nav />
-        <div>Member Section</div>
+        <div>Member Screen</div>
         <Route path="/member/locations" component={LocationListContainer} />
       </div>
     );
   }
 }
 
-export default MemberSection;
+export default MemberScreen;

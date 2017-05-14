@@ -5,26 +5,26 @@ import { Route } from 'react-router';
 import Nav from '../nav/Nav';
 import VisibleVisitList from '../visit/VisibleVisitList';
 
-export type GymSectionStateProps = {
+export type GymScreenStateProps = {
 
 };
 
-export type GymSectionDispatchProps = {
+export type GymScreenDispatchProps = {
 
 };
 
-class GymSection extends Component {
-  props: GymSectionStateProps & GymSectionDispatchProps;
+class GymScreen extends Component {
+  props: GymScreenStateProps & GymScreenDispatchProps;
 
   render() {
     return (
       <div>
         <Nav />
-        <div>Gym Section</div>
+        <div>Gym Screen</div>
         <Route path="/gym/visits" component={VisibleVisitList} />
       </div>
     );
   }
 }
 
-export default GymSection;
+export default GymScreen;

@@ -14,7 +14,7 @@ export function requestLocations() {
 export function receiveLocations(json: Array<GymLocation>) {
   let items = {};
   json.forEach((location) => {
-    items[location.gym_location_id] = location
+    items[location.gym_location_id] = location;
   });
 
   return {
