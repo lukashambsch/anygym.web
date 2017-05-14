@@ -19,7 +19,8 @@ describe('<GymScreen />', () => {
   it('GymScreen renders self and subcomponents', () => {
     const { gymScreen, props } = setup();
 
-    expect(gymScreen.find('Nav').length).toEqual(1);
+    expect(gymScreen.find('PageHeader').length).toEqual(1);
+    expect(gymScreen.find('PageBody').length).toEqual(1);
     expect(gymScreen.find('Route').length).toEqual(1);
   });
 

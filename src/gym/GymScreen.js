@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 
-import Nav from '../nav/Nav';
+import PageHeader from '../shared/PageHeader';
+import PageBody from '../shared/PageBody';
 import VisibleVisitList from '../visit/VisibleVisitList';
 
 export type GymScreenStateProps = {
@@ -19,9 +20,10 @@ class GymScreen extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <div>Gym Screen</div>
-        <Route path="/gym/visits" component={VisibleVisitList} />
+        <PageHeader title={'Gym Screen'} />
+        <PageBody>
+          <Route path="/gym/visits" component={VisibleVisitList} />
+        </PageBody>
       </div>
     );
   }

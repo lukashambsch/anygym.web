@@ -34,6 +34,8 @@ describe('<RegisterScreen />', () => {
   it('RegisterScreen renders self and subcomponents successfully', () => {
     const { props, registerScreen } = setup();
 
+    expect(registerScreen.find('PageHeader').length).toEqual(1);
+    expect(registerScreen.find('PageBody').length).toEqual(1);
     expect(registerScreen.find('RegisterForm').length).toEqual(1);
   });
 

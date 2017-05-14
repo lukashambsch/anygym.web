@@ -9,14 +9,18 @@ import reducer from './reducers';
 import rootSaga from './sagas';
 
 export const history = createHistory();
-const loggerMiddleware = createLogger();
 const reduxRouterMiddleware = routerMiddleware(history);
 const sagaMiddleware = createSagaMiddleware();
-
-export const store = createStore(reducer, applyMiddleware(
-  loggerMiddleware,
+let middleware = [
   reduxRouterMiddleware,
   sagaMiddleware
-));
+];
+
+if (process.env.NODE_ENV === 'development' || process.env.NODE_ENV === 'local') {
+  const loggerMiddleware = createLogger();
+  middleware.push(loggerMiddleware);
+}
+
+export const store = createStore(reducer, applyMiddleware(...middleware));
 
 sagaMiddleware.run(rootSaga);

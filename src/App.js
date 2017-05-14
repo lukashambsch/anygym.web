@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router';
 
 import { requireAuth } from './router';
+import Nav from './nav/Nav';
 import GymScreenContainer from './gym/GymScreenContainer';
 import LoginScreenContainer from './auth/LoginScreenContainer';
 import MemberScreenContainer from './member/MemberScreenContainer';
@@ -18,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Nav />
         <Route exact path="/" render={() => (
           <Redirect to="/login" />
         )}/>

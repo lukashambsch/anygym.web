@@ -2,14 +2,13 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 
-import Nav from '../nav/Nav';
+import PageHeader from '../shared/PageHeader';
+import PageBody from '../shared/PageBody';
 import LocationListContainer from '../location/LocationListContainer';
 
-export type MemberScreenStateProps = {
-};
+export type MemberScreenStateProps = { };
 
-export type MemberScreenDispatchProps = {
-};
+export type MemberScreenDispatchProps = { };
 
 class MemberScreen extends Component {
   props: MemberScreenStateProps & MemberScreenDispatchProps;
@@ -17,9 +16,10 @@ class MemberScreen extends Component {
   render() {
     return (
       <div>
-        <Nav />
-        <div>Member Screen</div>
-        <Route path="/member/locations" component={LocationListContainer} />
+        <PageHeader title={'Member Screen'} />
+        <PageBody>
+          <Route path="/member/locations" component={LocationListContainer} />
+        </PageBody>
       </div>
     );
   }
