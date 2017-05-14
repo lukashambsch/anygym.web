@@ -49,9 +49,9 @@ function mapDispatchToProps(dispatch): VisitListDispatchProps {
   }
 }
 
-const VisibleVisitList = connect(
+const VisitListContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(VisitList);
 
-export default VisibleVisitList;
+export default VisitListContainer;
