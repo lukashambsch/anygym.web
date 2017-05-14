@@ -4,9 +4,9 @@ import { Route, Redirect } from 'react-router';
 
 import { requireAuth } from './router';
 import GymScreenContainer from './gym/GymScreenContainer';
-import LoginContainer from './auth/LoginContainer';
+import LoginScreenContainer from './auth/LoginScreenContainer';
 import MemberScreenContainer from './member/MemberScreenContainer';
-import RegisterContainer from './auth/RegisterContainer';
+import RegisterScreenContainer from './auth/RegisterScreenContainer';
 
 import './App.css';
 
@@ -21,8 +21,8 @@ class App extends Component {
         <Route exact path="/" render={() => (
           <Redirect to="/login" />
         )}/>
-        <Route path="/login" component={LoginContainer} />
-        <Route path="/register" component={RegisterContainer} />
+        <Route path="/login" component={LoginScreenContainer} />
+        <Route path="/register" component={RegisterScreenContainer} />
         <Route path="/gym" component={GymScreenContainer} onEnter={requireAuth} />
         <Route path="/member" component={MemberScreenContainer} onEnter={requireAuth} />
       </div>

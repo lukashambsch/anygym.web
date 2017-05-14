@@ -3,22 +3,17 @@ import React, { Component } from 'react';
 
 import type { User, Role } from './types';
 
-export type RegistrationStateProps = {
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  roles: Array<Role>;
-};
-
-export type RegistrationDispatchProps = {
-  onEmailChange: Function;
-  onPasswordChange: Function;
-  onPasswordConfirmChange: Function;
-  register: Function;
-};
-
 class RegisterForm extends Component {
-  props: RegistrationStateProps & RegistrationDispatchProps;
+  props: {
+    email: string;
+    password: string;
+    passwordConfirm: string;
+    roles: Array<Role>;
+    onEmailChange: Function;
+    onPasswordChange: Function;
+    onPasswordConfirmChange: Function;
+    register: Function;
+  };
 
   getUser(): User {
     let user: User = {

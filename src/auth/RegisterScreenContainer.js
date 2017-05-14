@@ -1,11 +1,11 @@
 // @flow
 import { connect } from 'react-redux';
 
-import type { RegistrationStateProps, RegistrationDispatchProps } from './RegisterForm';
-import RegisterForm from './RegisterForm';
+import type { RegisterScreenStateProps, RegisterScreenDispatchProps } from './RegisterScreen';
+import RegisterScreen from './RegisterScreen';
 import { register, handleEmailChange, handlePasswordChange, handlePasswordConfirmChange } from './actions';
 
-function mapStateToProps(state: Object): RegistrationStateProps {
+function mapStateToProps(state: Object): RegisterScreenStateProps {
   return {
     email: state.auth.email,
     password: state.auth.password,
@@ -14,7 +14,7 @@ function mapStateToProps(state: Object): RegistrationStateProps {
   };
 }
 
-function mapDispatchToProps(dispatch: Function): RegistrationDispatchProps {
+function mapDispatchToProps(dispatch: Function): RegisterScreenDispatchProps {
   return {
     onEmailChange: (event) => {
       dispatch(handleEmailChange(event))
@@ -34,6 +34,6 @@ function mapDispatchToProps(dispatch: Function): RegistrationDispatchProps {
 const RegisterContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(RegisterForm);
+)(RegisterScreen);
 
 export default RegisterContainer;

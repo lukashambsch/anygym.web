@@ -1,18 +1,18 @@
 // @flow
 import { connect } from 'react-redux';
 
-import type { LoginStateProps, LoginDispatchProps } from './LoginForm';
-import LoginForm from './LoginForm';
+import type { LoginScreenStateProps, LoginScreenDispatchProps } from './LoginScreen';
+import LoginScreen from './LoginScreen';
 import { handleEmailChange, handlePasswordChange, login } from './actions';
 
-function mapStateToProps(state: Object): LoginStateProps {
+function mapStateToProps(state: Object): LoginScreenStateProps {
   return {
     email: state.auth.email,
     password: state.auth.password
   };
 }
 
-function mapDispatchToProps(dispatch: Function): LoginDispatchProps {
+function mapDispatchToProps(dispatch: Function): LoginScreenDispatchProps {
   return {
     onEmailChange: (event: SyntheticInputEvent) => {
       dispatch(handleEmailChange(event))
@@ -26,9 +26,9 @@ function mapDispatchToProps(dispatch: Function): LoginDispatchProps {
   };
 }
 
-const LoginContainer = connect(
+const LoginScreenContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(LoginForm);
+)(LoginScreen);
 
-export default LoginContainer;
+export default LoginScreenContainer;
