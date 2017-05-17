@@ -1,13 +1,42 @@
+@import '../../shared/static/globals.scss';
+
 nav {
+  min-height: 70px;
+  background-color: white;
+
+  button {
+    float: right;
+    cursor: pointer;
+    color: #F3F3F4;
+    background-color: $blackboard;
+    border: none;
+    padding: 8px 10px;
+    margin: 10px;
+
+    .fa-bars {
+      font-size: 20px;
+    }
+  }
+
+  img {
+    height: 70px;
+  }
+
   ul {
-    display: block;
+    display: inline-block;
     list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 
     li {
       display: inline-block;
-      height: 100px;
-      width: 30%;
+      height: 20px;
+      width: 100%;
       vertical-align: middle;
+      border-top: solid 1px $grain;
+      padding: 6px;
+      text-align: center;
 
       a {
         text-decoration: none;
