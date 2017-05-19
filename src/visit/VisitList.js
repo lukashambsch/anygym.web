@@ -14,8 +14,7 @@ export type VisitListStateProps = {
 
 export type VisitListDispatchProps = {
   loadData: Function;
-  onApproveClick: Function;
-  onDenyClick: Function;
+  goToDetail: Function;
 };
 
 class VisitList extends Component {
@@ -29,28 +28,13 @@ class VisitList extends Component {
     return (
       <div>
         <button onClick={() => this.props.loadData()}>Refresh</button>
-        <table>
-          <thead>
-            <tr>
-              <th>Member Name</th>
-              <th>Status</th>
-              <th>Created</th>
-              <th>Modified</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.visits.map(visit =>
-              <VisitRow
-                key={visit.visit_id}
-                members={this.props.members}
-                statuses={this.props.statuses}
-                approve={this.props.onApproveClick}
-                deny={this.props.onDenyClick}
-                visit={visit} />
-            )}
-          </tbody>
-        </table>
+        {this.props.visits.map(visit =>
+          <VisitRow
+            key={visit.visit_id}
+            member={this.props.members[visit.member_id] || {}}
+            visit={visit}
+            clickHandler={() => this.props.goToDetail(visit.visit_id)} />
+        )}
       </div>
     );
   }

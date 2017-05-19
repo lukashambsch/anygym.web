@@ -1,9 +1,9 @@
 // @flow
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
-import { approveVisit, denyVisit, requestVisits } from './actions';
-import { fetchMembers } from '../member/actions';
-import { fetchStatuses } from '../status/actions';
+import { requestVisits, setCurrentVisit } from './actions';
+import { requestMembers } from '../member/actions';
 import VisitList from './VisitList';
 import type { VisitListStateProps, VisitListDispatchProps } from './VisitList';
 import type { Visit } from './types';
@@ -35,16 +35,13 @@ function mapStateToProps(state: Object): VisitListStateProps {
 
 function mapDispatchToProps(dispatch): VisitListDispatchProps {
   return {
-    onApproveClick: (visit: Visit) => {
-      dispatch(approveVisit(visit));
-    },
-    onDenyClick: (visit: Visit) => {
-      dispatch(denyVisit(visit));
-    },
     loadData: () => {
       dispatch(requestVisits());
-      dispatch(fetchStatuses());
-      dispatch(fetchMembers());
+      dispatch(requestMembers());
+    },
+    goToDetail: (visit_id: number) => {
+      dispatch(setCurrentVisit(visit_id));
+      dispatch(push(`/gym/visits/${visit_id}`));
     }
   }
 }

@@ -5,6 +5,7 @@ import { render } from 'react-dom';
 import config from './config';
 import router from './router';
 
+import 'normalize.css/normalize.css';
 import 'font-awesome/css/font-awesome.css';
 
 axios.defaults.baseURL = config.apiRoot;

@@ -32,7 +32,3 @@ export function receiveStatuses(json: Array<Status>) {
     receivedAt: Date.now()
   };
 }
-
-export function fetchStatuses() {
-  return requestStatuses();
-}

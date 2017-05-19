@@ -4,6 +4,6 @@ export type Visit = {
   member_id: number,
   gym_location_id: number,
   status_id: number,
-  created_on: Date,
-  modified_on: Date
+  created_on: string,
+  modified_on: string
 };

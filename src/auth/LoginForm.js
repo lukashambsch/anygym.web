@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 
+import Button from '../shared/Button';
+
 class LoginForm extends Component {
   props: {
     email: string;
@@ -23,7 +25,11 @@ class LoginForm extends Component {
           placeholder="password"
           value={this.props.password}
           onChange={this.props.onPasswordChange} />
-        <button onClick={() => this.props.login(this.props.email, this.props.password)}>Login</button>
+        <Button
+          color="red"
+          clickHandler={() => this.props.login(this.props.email, this.props.password)}>
+          Login
+        </Button>
       </div>
     );
   }

@@ -27,14 +27,7 @@ describe('<LoginForm />', () => {
 
     expect(loginForm.find('input[type="text"]').length).toEqual(1);
     expect(loginForm.find('input[type="password"]').length).toEqual(1);
-    expect(loginForm.find('button'));
-  });
-
-  it('LoginForm button click logs in user', () => {
-    const { props, loginForm } = setup();
-
-    loginForm.find('button').simulate('click');
-    expect(props.login.mock.calls.length).toEqual(1);
+    expect(loginForm.find('Button'));
   });
 
   it('LoginForm email text box updates email', () => {

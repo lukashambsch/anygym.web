@@ -8,6 +8,7 @@ export const UPDATE_VISIT_SUCCESS = 'UPDATE_VISIT_SUCCESS';
 export const FAIL_VISIT_REQUEST = 'FAIL_VISIT_REQUEST';
 export const REQUEST_VISITS = 'REQUEST_VISITS';
 export const RECEIVE_VISITS = 'RECEIVE_VISITS';
+export const SET_CURRENT_VISIT = 'SET_CURRENT_VISIT';
 
 const pendingId: number = 1;
 const approvedId: number = 2;
@@ -70,8 +71,11 @@ export function receiveVisits(json: Array<Visit>) {
   };
 }
 
-export function fetchVisits() {
-  return requestVisits();
+export function setCurrentVisit(visit_id: number) {
+  return {
+    type: SET_CURRENT_VISIT,
+    visit_id: visit_id
+  }
 }
 
 export function approveVisit(visit: Visit) {

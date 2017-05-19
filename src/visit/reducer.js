@@ -3,13 +3,16 @@ import {
   REQUEST_VISITS,
   RECEIVE_VISITS,
   UPDATE_VISIT,
-  FAIL_VISIT_REQUEST
+  FAIL_VISIT_REQUEST,
+  SET_CURRENT_VISIT
 } from './actions';
+import type { Visit } from './types';
 
 type State = {
   isFetching: boolean;
   visibilityFilter: string;
   items: Object;
+  visit: ?Visit;
   error: ?Error;
 };
 
@@ -17,6 +20,7 @@ export const initialState: State = {
   isFetching: false,
   visibilityFilter: 'SHOW_ALL',
   items: {},
+  visit: null,
   error: null
 };
 
@@ -46,6 +50,10 @@ const visits = (state: State = initialState, action: Object) => {
       return Object.assign({}, state, {
         isFetching: false,
         error: action.error
+      });
+    case SET_CURRENT_VISIT:
+      return Object.assign({}, state, {
+        visit: state.items[action.visit_id]
       });
     default:
       return state;

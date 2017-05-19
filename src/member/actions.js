@@ -30,7 +30,3 @@ export function receiveMembers(json: Array<Member>) {
     receivedAt: Date.now()
   };
 }
-
-export function fetchMembers() {
-  return requestMembers();
-}
