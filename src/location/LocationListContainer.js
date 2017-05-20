@@ -11,7 +11,7 @@ function mapStateToProps(state: Object): LocationListStateProps {
   let locations = Object.keys(state.locations.items).map((key) => state.locations.items[key]);
 
   return {
-    member: { user_id: state.auth.userId },
+    member: { member_id: state.auth.userId },
     locations: locations
   };
 }
