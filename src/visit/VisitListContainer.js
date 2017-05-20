@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { requestVisits, setCurrentVisit } from './actions';
+import { requestVisits } from './actions';
 import { requestMembers } from '../member/actions';
 import VisitList from './VisitList';
 import type { VisitListStateProps, VisitListDispatchProps } from './VisitList';
@@ -40,7 +40,6 @@ function mapDispatchToProps(dispatch): VisitListDispatchProps {
       dispatch(requestMembers());
     },
     goToDetail: (visit_id: number) => {
-      dispatch(setCurrentVisit(visit_id));
       dispatch(push(`/gym/visits/${visit_id}`));
     }
   }

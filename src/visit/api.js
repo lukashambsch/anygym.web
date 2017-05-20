@@ -10,6 +10,10 @@ const visitApi = {
     return axios.get(root)
       .then(response => response.data);
   },
+  getVisit: (visit_id: number): Promise<Visit> => {
+    return axios.get(`${root}/${visit_id}`)
+      .then(response => response.data);
+  },
   createVisit: (visit: Visit): Promise<Visit> => {
     return axios.post(root, visit)
       .then(response => response.data);

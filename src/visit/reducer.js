@@ -4,7 +4,8 @@ import {
   RECEIVE_VISITS,
   UPDATE_VISIT,
   FAIL_VISIT_REQUEST,
-  SET_CURRENT_VISIT
+  REQUEST_VISIT,
+  RECEIVE_VISIT
 } from './actions';
 import type { Visit } from './types';
 
@@ -20,7 +21,14 @@ export const initialState: State = {
   isFetching: false,
   visibilityFilter: 'SHOW_ALL',
   items: {},
-  visit: null,
+  visit: {
+    visit_id: 0,
+    member_id: 0,
+    gym_location_id: 0,
+    status_id: 0,
+    created_on: '',
+    modified_on: ''
+  },
   error: null
 };
 
@@ -38,6 +46,11 @@ const visits = (state: State = initialState, action: Object) => {
         items: action.visits,
         lastUpdated: action.recievedAt
       });
+    case RECEIVE_VISIT:
+      return Object.assign({}, state, {
+        isFetching: false,
+        visit: action.visit
+      });
     case UPDATE_VISIT:
       items = Object.assign(state.items, {});
 
@@ -51,9 +64,9 @@ const visits = (state: State = initialState, action: Object) => {
         isFetching: false,
         error: action.error
       });
-    case SET_CURRENT_VISIT:
+    case REQUEST_VISIT:
       return Object.assign({}, state, {
-        visit: state.items[action.visit_id]
+        isFetching: true
       });
     default:
       return state;

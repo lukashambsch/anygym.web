@@ -10,11 +10,19 @@ export type GymScreenStateProps = {
 };
 
 export type GymScreenDispatchProps = {
-
+  getVisits: Function;
+  getMembers: Function;
+  getStatuses: Function;
 };
 
 class GymScreen extends Component {
   props: GymScreenStateProps & GymScreenDispatchProps;
+
+  componentWillMount() {
+    this.props.getVisits();
+    this.props.getMembers();
+    this.props.getStatuses();
+  }
 
   render() {
     return (

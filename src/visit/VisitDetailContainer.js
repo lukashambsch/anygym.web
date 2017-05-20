@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import { approveVisit, denyVisit } from './actions';
+import { approveVisit, denyVisit, requestVisit } from './actions';
 import VisitDetail from './VisitDetail';
 import type { VisitDetailStateProps, VisitDetailDispatchProps } from './VisitDetail';
 import type { Visit } from './types';
@@ -24,6 +24,9 @@ function mapDispatchToProps(dispatch: Function): VisitDetailDispatchProps {
     },
     goToVisitList: () => {
       dispatch(push('/gym/visits'));
+    },
+    requestVisit: (visit_id: number) => {
+      dispatch(requestVisit(visit_id));
     }
   }
 }

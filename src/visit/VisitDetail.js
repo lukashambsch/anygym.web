@@ -14,10 +14,15 @@ export type VisitDetailDispatchProps = {
   approveClickHandler: Function;
   denyClickHandler: Function;
   goToVisitList: Function;
+  requestVisit: Function;
 };
 
 class VisitDetail extends Component {
   props: VisitDetailStateProps & VisitDetailDispatchProps;
+
+  componentDidMount() {
+    this.props.requestVisit(this.props.match.params.visit_id);
+  }
 
   render() {
     return (

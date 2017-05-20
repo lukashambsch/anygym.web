@@ -8,7 +8,8 @@ export const UPDATE_VISIT_SUCCESS = 'UPDATE_VISIT_SUCCESS';
 export const FAIL_VISIT_REQUEST = 'FAIL_VISIT_REQUEST';
 export const REQUEST_VISITS = 'REQUEST_VISITS';
 export const RECEIVE_VISITS = 'RECEIVE_VISITS';
-export const SET_CURRENT_VISIT = 'SET_CURRENT_VISIT';
+export const REQUEST_VISIT = 'REQUEST_VISIT';
+export const RECEIVE_VISIT = 'RECEIVE_VISIT';
 
 const pendingId: number = 1;
 const approvedId: number = 2;
@@ -71,11 +72,11 @@ export function receiveVisits(json: Array<Visit>) {
   };
 }
 
-export function setCurrentVisit(visit_id: number) {
+export function receiveVisit(visit: Visit) {
   return {
-    type: SET_CURRENT_VISIT,
-    visit_id: visit_id
-  }
+    type: RECEIVE_VISIT,
+    visit: visit
+  };
 }
 
 export function approveVisit(visit: Visit) {
@@ -86,4 +87,11 @@ export function approveVisit(visit: Visit) {
 export function denyVisit(visit: Visit) {
   visit.status_id = deniedIdentityId;
   return updateVisit(visit);
+}
+
+export function requestVisit(visit_id: number) {
+  return {
+    type: REQUEST_VISIT,
+    visit_id: visit_id
+  }
 }
