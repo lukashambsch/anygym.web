@@ -35,6 +35,11 @@ class VisitList extends Component {
     }
   }
 
+  loadData() {
+    this.props.requestVisits();
+    this.props.requestMembers();
+  }
+
   render() {
     return (
       <div className="row visit-list">
@@ -42,7 +47,7 @@ class VisitList extends Component {
           <div className="columns twelve action-bar">
             <Button
               color="gray"
-              clickHandler={() => this.props.loadData()}>
+              clickHandler={() => this.loadData()}>
               Update
             </Button>
           </div>
