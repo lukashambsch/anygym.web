@@ -1,14 +1,25 @@
 @import '../../shared/static/globals.scss';
 
 .visit-row {
-  &:hover {
-    background-color: $light-gray;
-  }
-
   cursor: pointer;
   min-height: 70px;
   vertical-align: middle;
   border-bottom: 2px solid $light-gray;
+
+  &:hover {
+    background-color: $light-gray;
+    opacity: 1 !important;
+  }
+
+  &.denied {
+    background-color: $light-red;
+    opacity: .75;
+  }
+
+  &.approved {
+    background-color: $light-green;
+    opacity: .75;
+  }
 
   span {
     line-height: 70px;
