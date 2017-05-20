@@ -1,13 +1,20 @@
 // @flow
 import React, { Component } from 'react';
 
+import PageBody from '../shared/PageBody';
 import Button from '../shared/Button';
 import type { Visit } from './types';
 import type { Member } from '../member/types';
+import type { Status } from '../status/types';
+
+// placeholder replace w/ visit.image_path
+import photo from '../shared/static/lukas-hambsch-profile.jpg';
+import './static/VisitDetail.css';
 
 export type VisitDetailStateProps = {
   visit: Visit;
   member: Member;
+  status: Status;
 };
 
 export type VisitDetailDispatchProps = {
@@ -26,15 +33,43 @@ class VisitDetail extends Component {
 
   render() {
     return (
-      <div className="visit-detail">
-        <Button
-          color="red"
-          clickHandler={this.props.goToVisitList}>
-          <span className="fa fa-arrow-left"></span>
-        </Button>
-        <span>{this.props.member.first_name}</span>
-        <span>{this.props.member.last_name}</span>
-        <span>{this.props.visit.created_on}</span>
+      <div className="row visit-detail">
+        <PageBody>
+          <Button
+            clickHandler={this.props.goToVisitList}>
+            <span className="fa fa-arrow-left"></span>
+          </Button>
+          <div className="row">
+            <img className="profile-photo u-img-responsive" src={photo} alt="" />
+          </div>
+          <div className="columns twelve">
+            <p>
+              <b>Name:</b> {`${this.props.member.first_name} ${this.props.member.last_name}`}
+            </p>
+            <p>
+              <b>Email:</b> {this.props.member.user.email}
+            </p>
+            <p>
+              <b>Status:</b> {this.props.status.status_name}
+            </p>
+          </div>
+          <div className="button-container">
+            <Button
+              className="columns"
+              color="green"
+              clickHandler={() => this.props.approveClickHandler(this.props.visit)}>
+              Approve
+            </Button>
+          </div>
+          <div className="button-container">
+            <Button
+              className="columns"
+              color="red"
+              clickHandler={() => this.props.denyClickHandler(this.props.visit)}>
+              Deny
+            </Button>
+          </div>
+        </PageBody>
       </div>
     );
   }

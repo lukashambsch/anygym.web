@@ -2,7 +2,7 @@ export type User = {
   user_id: number;
   email: string;
   password: string;
-  created_on?: Date;
+  created_on?: string;
 };
 
 export type Role = {

@@ -8,9 +8,18 @@ import type { VisitDetailStateProps, VisitDetailDispatchProps } from './VisitDet
 import type { Visit } from './types';
 
 function mapStateToProps(state: Object): VisitDetailStateProps {
+  let emptyMember = {
+    member_id: 0,
+    user: {
+      user_id: 0,
+      email: '',
+      password: ''
+    }
+  };
   return {
     visit: state.visits.visit,
-    member: state.members.items[state.visits.visit.member_id] || {}
+    member: state.members.items[state.visits.visit.member_id] || emptyMember,
+    status: state.statuses.items[state.visits.visit.status_id] || {}
   };
 }
 

@@ -1,14 +1,25 @@
 @import './globals.scss';
 
-.btn-white {
-  background-color: white;
-}
+.button {
+  &.btn-white {
+    background-color: white;
+  }
 
-.btn-gray {
-  background-color: $gray;
-}
+  &.btn-gray {
+    background-color: $gray;
+  }
 
-.btn-red {
-  background-color: $red;
-  color: white;
+  &.btn-red {
+    background-color: $red;
+    color: white;
+  }
+
+  &.btn-green {
+    background-color: #4BB543;
+    color: white;
+  }
+
+  &:hover {
+    opacity: .9;
+  }
 }

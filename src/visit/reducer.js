@@ -27,7 +27,7 @@ export const initialState: State = {
     gym_location_id: 0,
     status_id: 0,
     created_on: '',
-    modified_on: ''
+    modified_on: '',
   },
   error: null
 };
