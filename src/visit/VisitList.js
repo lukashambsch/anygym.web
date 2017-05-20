@@ -32,12 +32,11 @@ class VisitList extends Component {
     return (
       <div className="row visit-list">
         <PageBody>
-          <div className="row action-bar">
+          <div className="columns twelve action-bar">
             <Button
               color="gray"
-              className=""
               clickHandler={() => this.props.loadData()}>
-              Refresh
+              Update
             </Button>
           </div>
           <h3>Check In</h3>
