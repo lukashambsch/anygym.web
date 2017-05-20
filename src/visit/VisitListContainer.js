@@ -35,8 +35,10 @@ function mapStateToProps(state: Object): VisitListStateProps {
 
 function mapDispatchToProps(dispatch): VisitListDispatchProps {
   return {
-    loadData: () => {
+    requestVisits: () => {
       dispatch(requestVisits());
+    },
+    requestMembers: () => {
       dispatch(requestMembers());
     },
     goToDetail: (visit_id: number) => {

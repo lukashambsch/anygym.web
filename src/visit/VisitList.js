@@ -17,7 +17,8 @@ export type VisitListStateProps = {
 };
 
 export type VisitListDispatchProps = {
-  loadData: Function;
+  requestVisits: Function;
+  requestMembers: Function;
   goToDetail: Function;
 };
 
@@ -25,7 +26,13 @@ class VisitList extends Component {
   props: VisitListStateProps & VisitListDispatchProps;
 
   componentWillMount() {
-    this.props.loadData();
+    if (Object.keys(this.props.visits).length === 0) {
+      this.props.requestVisits();
+    }
+
+    if (Object.keys(this.props.members).length === 0) {
+      this.props.requestMembers();
+    }
   }
 
   render() {

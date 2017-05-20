@@ -1,5 +1,6 @@
 // @flow
 import type { Visit } from './types';
+import { statusEnum } from '../status/enums';
 
 export const UPDATE_VISIT = 'UPDATE_VISIT';
 export const CREATE_VISIT = 'CREATE_VISIT';
@@ -11,11 +12,6 @@ export const RECEIVE_VISITS = 'RECEIVE_VISITS';
 export const REQUEST_VISIT = 'REQUEST_VISIT';
 export const RECEIVE_VISIT = 'RECEIVE_VISIT';
 
-const pendingId: number = 1;
-const approvedId: number = 2;
-const deniedIdentityId: number = 3;
-//const deniedBannedId = 4;
-
 export function updateVisit(visit: Visit) {
   return {
     type: UPDATE_VISIT,
@@ -24,7 +20,7 @@ export function updateVisit(visit: Visit) {
 }
 
 export function createVisit(visit: Visit) {
-  visit.status_id = pendingId;
+  visit.status_id = statusEnum.Pending;
 
   return {
     type: CREATE_VISIT,
@@ -80,12 +76,12 @@ export function receiveVisit(visit: Visit) {
 }
 
 export function approveVisit(visit: Visit) {
-  visit.status_id = approvedId;
+  visit.status_id = statusEnum.Approved;
   return updateVisit(visit);
 }
 
 export function denyVisit(visit: Visit) {
-  visit.status_id = deniedIdentityId;
+  visit.status_id = statusEnum.DeniedIdentity;
   return updateVisit(visit);
 }
 

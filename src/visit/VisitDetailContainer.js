@@ -27,9 +27,11 @@ function mapDispatchToProps(dispatch: Function): VisitDetailDispatchProps {
   return {
     approveClickHandler: (visit: Visit) => {
       dispatch(approveVisit(visit));
+      dispatch(push('/gym/visits'));
     },
     denyClickHandler: (visit: Visit) => {
       dispatch(denyVisit(visit));
+      dispatch(push('/gym/visits'));
     },
     goToVisitList: () => {
       dispatch(push('/gym/visits'));
