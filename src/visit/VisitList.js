@@ -47,7 +47,7 @@ class VisitList extends Component {
           <div className="columns twelve action-bar">
             <Button
               color="gray"
-              clickHandler={() => this.loadData()}>
+              clickHandler={this.props.loadData}>
               Update
             </Button>
           </div>

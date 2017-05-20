@@ -9,9 +9,9 @@ function setup() {
     visits: visits,
     members: members,
     statuses: statuses,
-    loadData: jest.fn(),
-    onApproveClick: jest.fn(),
-    onDenyClick: jest.fn(),
+    requestVisits: jest.fn(),
+    requestMembers: jest.fn(),
+    goToDetail: jest.fn(),
   };
 
   const visitList = shallow(<VisitList {...props} />);
@@ -25,10 +25,16 @@ function setup() {
 
 describe('VisitList', () => {
 
-  it('should have 3 VisitRow components', () => {
+  it('VisitList should have 3 VisitRow components', () => {
     const { visitList, props } = setup();
 
     expect(visitList.find('VisitRow').length).toEqual(3);
+  });
+
+  it('VisitList should update data on Update click', () => {
+    const { visitList, props } = setup();
+
+    expect(visitList.find('Button').props().clickHandler).toEqual(visitList.loadData);
   });
 
 });
