@@ -22,8 +22,16 @@
     width: 48%;
     margin: 0 1%;
 
+    button.button.btn {
+      height: 60px;
+    }
+
     @media (min-width: $tablet) {
       width: 98%;
+
+      button.button.btn {
+        height: 70px;
+      }
     }
   }
 }

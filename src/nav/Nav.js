@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import Button from '../shared/Button';
+
 import './static/Nav.css';
 
 export type NavStateProps = {
@@ -23,11 +25,13 @@ class Nav extends Component {
             src="http://nanniesintl.com//wp-content/uploads/2014/12/logo-nanny-new-01.png"
             alt="NanniesCA" />
         </Link>
-        <button className="button" onClick={this.props.toggleMenu}>
+        <Button
+          color="blue"
+          clickHandler={this.props.toggleMenu}>
           <span>
             <span className="fa fa-bars"></span>
           </span>
-        </button>
+        </Button>
         {this.props.isMenuVisible &&
           <ul>
             <li>

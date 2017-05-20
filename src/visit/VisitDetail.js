@@ -36,6 +36,7 @@ class VisitDetail extends Component {
       <div className="row visit-detail">
         <PageBody>
           <Button
+            color="gray"
             clickHandler={this.props.goToVisitList}>
             <span className="fa fa-arrow-left"></span>
           </Button>
@@ -56,7 +57,7 @@ class VisitDetail extends Component {
           <div className="button-container">
             <Button
               className="columns"
-              color="green"
+              color="light-green"
               clickHandler={() => this.props.approveClickHandler(this.props.visit)}>
               Approve
             </Button>
@@ -64,7 +65,7 @@ class VisitDetail extends Component {
           <div className="button-container">
             <Button
               className="columns"
-              color="red"
+              color="light-red"
               clickHandler={() => this.props.denyClickHandler(this.props.visit)}>
               Deny
             </Button>

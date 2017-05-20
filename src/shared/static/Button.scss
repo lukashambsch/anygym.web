@@ -1,6 +1,13 @@
 @import './globals.scss';
 
 .button {
+
+  &.btn {
+    height: 40px;
+    border-radius: 0;
+    border: none;
+  }
+
   &.btn-white {
     background-color: white;
   }
@@ -14,9 +21,24 @@
     color: white;
   }
 
+  &.btn-light-red {
+    background-color: $light-red;
+    color: black;
+  }
+
+  &.btn-blue {
+    background-color: $blue;
+    color: white;
+  }
+
   &.btn-green {
     background-color: $green;
     color: white;
+  }
+
+  &.btn-light-green {
+    background-color: $light-green;
+    color: black;
   }
 
   &:hover {

@@ -12,7 +12,7 @@ class Button extends Component {
   };
 
   render() {
-    let className: string = 'button';
+    let className: string = 'button btn';
 
     if (this.props.color) {
       className = `${className} btn-${this.props.color}`;
