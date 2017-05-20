@@ -44,7 +44,7 @@ const visits = (state: State = initialState, action: Object) => {
       return Object.assign({}, state, {
         isFetching: false,
         items: action.visits,
-        lastUpdated: action.recievedAt
+        lastUpdated: action.receivedAt
       });
     case RECEIVE_VISIT:
       return Object.assign({}, state, {
