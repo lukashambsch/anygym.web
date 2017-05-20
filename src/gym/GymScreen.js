@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 
-import PageHeader from '../shared/PageHeader';
-import PageBody from '../shared/PageBody';
 import VisitListContainer from '../visit/VisitListContainer';
 import VisitDetailContainer from '../visit/VisitDetailContainer';
 
@@ -20,12 +18,9 @@ class GymScreen extends Component {
 
   render() {
     return (
-      <div>
-        <PageHeader title={'Gym Screen'} />
-        <PageBody>
-          <Route exact path="/gym/visits" component={VisitListContainer} />
-          <Route exact path="/gym/visits/:visit_id" component={VisitDetailContainer} />
-        </PageBody>
+      <div className="container">
+        <Route exact path="/gym/visits" component={VisitListContainer} />
+        <Route exact path="/gym/visits/:visit_id" component={VisitDetailContainer} />
       </div>
     );
   }

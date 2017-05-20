@@ -15,7 +15,7 @@ class MemberScreen extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <PageHeader title={'Member Screen'} />
         <PageBody>
           <Route path="/member/locations" component={LocationListContainer} />

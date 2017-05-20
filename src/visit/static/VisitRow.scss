@@ -1,0 +1,18 @@
+@import '../../shared/static/globals.scss';
+
+.visit-row {
+  &:hover {
+    background-color: $light-gray;
+  }
+
+  cursor: pointer;
+  min-height: 70px;
+  vertical-align: middle;
+  border-bottom: 2px solid $light-gray;
+
+  span {
+    line-height: 70px;
+    font-size: 22px;
+    margin: 4px;
+  }
+}

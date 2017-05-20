@@ -23,9 +23,10 @@ class Nav extends Component {
             src="http://nanniesintl.com//wp-content/uploads/2014/12/logo-nanny-new-01.png"
             alt="NanniesCA" />
         </Link>
-        <button onClick={this.props.toggleMenu}>
-          <span className="fa fa-bars"></span>
-          <div>Menu</div>
+        <button className="button" onClick={this.props.toggleMenu}>
+          <span>
+            <span className="fa fa-bars"></span>
+          </span>
         </button>
         {this.props.isMenuVisible &&
           <ul>

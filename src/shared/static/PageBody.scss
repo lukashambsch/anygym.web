@@ -1,5 +1,10 @@
 @import '../../shared/static/globals.scss';
 
 section {
-  background-color: $grain;
+  background-color: white;
+  padding: 8px;
+
+  /*@media (min-width: $tablet) {*/
+    /*margin: 0 50px;*/
+  /*}*/
 }

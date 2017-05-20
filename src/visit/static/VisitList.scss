@@ -1,0 +1,11 @@
+@import '../../shared/static/globals.scss';
+
+.visit-list {
+  .action-bar {
+    height: 70px;
+
+    button {
+      float: right;
+    }
+  }
+}

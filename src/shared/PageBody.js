@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 
+import './static/PageBody.css';
+
 class PageBody extends Component {
   props: {
     children?: any;
@@ -8,9 +10,11 @@ class PageBody extends Component {
 
   render() {
     return (
-      <section>
-        {this.props.children}
-      </section>
+      <div className="row">
+        <section>
+          {this.props.children}
+        </section>
+      </div>
     );
   }
 }

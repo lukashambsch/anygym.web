@@ -21,14 +21,14 @@ describe('<Button />', () => {
   it('Button renders self & subcomponents', () => {
     const { props, button } = setup();
 
-    expect(button.find('.btn').length).toEqual(1);
-    expect(button.find('.btn').text()).toEqual('Submit');
+    expect(button.find('.button').length).toEqual(1);
+    expect(button.find('.button').text()).toEqual('Submit');
   });
 
   it('Button click calls clickHandler', () => {
     const { props, button } = setup();
 
-    button.find('.btn').simulate('click');
+    button.find('.button').simulate('click');
     expect(props.clickHandler.mock.calls.length).toEqual(1);
   });
 
@@ -44,7 +44,7 @@ describe('<Button />', () => {
     );
 
     expect(button.find('.btn-white').length).toEqual(1);
-    expect(button.find('.btn > span.test').length).toEqual(1);
+    expect(button.find('.button > span.test').length).toEqual(1);
   });
 
 });

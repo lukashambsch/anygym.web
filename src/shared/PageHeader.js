@@ -1,6 +1,8 @@
 // @flow
 import React, { Component } from 'react';
 
+import './static/PageHeader.css';
+
 class PageHeader extends Component {
   props: {
     title: string;

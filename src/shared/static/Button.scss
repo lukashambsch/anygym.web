@@ -1,17 +1,14 @@
 @import './globals.scss';
 
-.btn {
-  border: none;
-  padding: 8px;
-  margin: 8px;
-  color: $black;
+.btn-white {
+  background-color: white;
 }
 
-.btn-white {
-  background-color: $white;
+.btn-gray {
+  background-color: $gray;
 }
 
 .btn-red {
   background-color: $red;
-  color: $white;
+  color: white;
 }

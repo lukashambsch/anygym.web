@@ -1,10 +1,14 @@
 // @flow
 import React, { Component } from 'react';
 
+import PageBody from '../shared/PageBody';
+import Button from '../shared/Button';
 import VisitRow from './VisitRow';
 import type { Visit } from './types';
 import type { Member } from '../member/types';
 import type { Status } from '../status/types';
+
+import './static/VisitList.css';
 
 export type VisitListStateProps = {
   visits: Array<Visit>;
@@ -26,15 +30,25 @@ class VisitList extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={() => this.props.loadData()}>Refresh</button>
-        {this.props.visits.map(visit =>
-          <VisitRow
-            key={visit.visit_id}
-            member={this.props.members[visit.member_id] || {}}
-            visit={visit}
-            clickHandler={() => this.props.goToDetail(visit.visit_id)} />
-        )}
+      <div className="row visit-list">
+        <PageBody>
+          <div className="row action-bar">
+            <Button
+              color="gray"
+              className=""
+              clickHandler={() => this.props.loadData()}>
+              Refresh
+            </Button>
+          </div>
+          <h3>Check In</h3>
+          {this.props.visits.map(visit =>
+            <VisitRow
+              key={visit.visit_id}
+              member={this.props.members[visit.member_id] || {}}
+              visit={visit}
+              clickHandler={() => this.props.goToDetail(visit.visit_id)} />
+          )}
+        </PageBody>
       </div>
     );
   }

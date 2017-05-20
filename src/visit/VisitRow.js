@@ -5,6 +5,8 @@ import { formatTime } from '../shared/utils';
 import type { Visit } from '../visit/types';
 import type { Member } from '../member/types';
 
+import './static/VisitRow.css';
+
 class VisitRow extends Component {
   props: {
     member: Member;
@@ -22,4 +24,4 @@ class VisitRow extends Component {
   }
 }
 
-export default VisitRow
+export default VisitRow;
