@@ -14,5 +14,9 @@
     line-height: 70px;
     font-size: 22px;
     margin: 4px;
+
+    &:last-child {
+      float: right;
+    }
   }
 }

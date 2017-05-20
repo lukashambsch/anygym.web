@@ -16,7 +16,7 @@ class VisitRow extends Component {
 
   render() {
     return (
-      <div className="visit-row" onClick={this.props.clickHandler}>
+      <div className="columns twelve visit-row" onClick={this.props.clickHandler}>
         <span>{this.props.member.first_name + ' ' + this.props.member.last_name}</span>
         <span>{formatTime(this.props.visit.created_on)}</span>
       </div>
