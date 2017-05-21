@@ -10,16 +10,15 @@ import {
   REQUEST_REGISTER,
   REGISTER_SUCCESS
 } from './actions';
+import type { User } from './types';
 
 type State = {
   isAuthenticating: boolean;
   isRegistering: boolean;
   authenticated: boolean;
   token: string;
-  email: string;
-  password: string;
   passwordConfirm: string;
-  userId: number;
+  user: User;
 };
 
 export const initialState: State = {
@@ -27,37 +26,50 @@ export const initialState: State = {
   isRegistering: true,
   authenticated: false,
   token: '',
-  email: '',
-  password: '',
   passwordConfirm: '',
-  userId: 0
+  user: {
+    user_id: 0,
+    email: '',
+    password: ''
+  }
 };
 
 function auth (state: State = initialState, action: Object) {
+  let user: User;
+
   switch (action.type) {
     case SET_AUTH_SUCCESS:
       return Object.assign({}, state, {
         isAuthenticating: false,
         authenticated: true,
         token: action.token,
-        email: '',
-        password: ''
       });
     case SET_AUTH_FAILURE:
+      user = Object.assign({}, state.user, {
+        password: ''
+      });
+
       return Object.assign({}, state, {
         isAuthenticating: false,
         authenticated: false,
         token: '',
-        email: '',
-        password: ''
+        user: user
       });
     case HANDLE_EMAIL_CHANGE:
-      return Object.assign({}, state, {
+      user = Object.assign({}, state.user, {
         email: action.email
       });
-    case HANDLE_PASSWORD_CHANGE:
+
       return Object.assign({}, state, {
+        user: user
+      });
+    case HANDLE_PASSWORD_CHANGE:
+      user = Object.assign({}, state.user, {
         password: action.password
+      });
+
+      return Object.assign({}, state, {
+        user: user
       });
     case HANDLE_PASSWORD_CONFIRM_CHANGE:
       return Object.assign({}, state, {
@@ -80,8 +92,6 @@ function auth (state: State = initialState, action: Object) {
     case REGISTER_SUCCESS:
       return Object.assign({}, state, {
         isRegistering: false,
-        email: '',
-        password: '',
         passwordConfirm: ''
       });
     default:

@@ -4,7 +4,7 @@ import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
 import authApi from './api';
 import { REQUEST_TOKEN, REQUEST_REGISTER } from './actions';
-import { requestToken, registerSuccess, authenticateSuccess } from './actions';
+import { requestToken, registerSuccess, authenticateSuccess, authenticateFailure } from './actions';
 
 export function* getToken(action: Object): any {
   try {
@@ -13,6 +13,7 @@ export function* getToken(action: Object): any {
     yield put(authenticateSuccess(token));
     yield put(push('/gym/visits'));
   } catch(e) {
+    yield put(authenticateFailure(e));
     console.log(e);
   }
 }

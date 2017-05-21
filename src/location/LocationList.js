@@ -27,7 +27,7 @@ class LocationList extends Component {
     return (
       <div className="location-list">
         <PageBody>
-          <h3>Check In</h3>
+          <h3>Find a Gym</h3>
           {this.props.locations.map(location =>
             <LocationRow
               key={location.gym_location_id}

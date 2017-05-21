@@ -7,8 +7,8 @@ import { handleEmailChange, handlePasswordChange, login } from './actions';
 
 function mapStateToProps(state: Object): LoginScreenStateProps {
   return {
-    email: state.auth.email,
-    password: state.auth.password
+    email: state.auth.user.email,
+    password: state.auth.user.password
   };
 }
 
