@@ -2,8 +2,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router';
 
-import PageHeader from '../shared/PageHeader';
-import PageBody from '../shared/PageBody';
 import LocationListContainer from '../location/LocationListContainer';
 
 export type MemberScreenStateProps = { };
@@ -16,10 +14,7 @@ class MemberScreen extends Component {
   render() {
     return (
       <div className="container">
-        <PageHeader title={'Member Screen'} />
-        <PageBody>
-          <Route path="/member/locations" component={LocationListContainer} />
-        </PageBody>
+        <Route path="/member/locations" component={LocationListContainer} />
       </div>
     );
   }

@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 
+import PageBody from '../shared/PageBody';
 import LocationRow from './LocationRow';
 import type { GymLocation } from './types';
 import type { Member } from '../member/types';
@@ -24,24 +25,17 @@ class LocationList extends Component {
 
   render() {
     return (
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Location Name</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.props.locations.map(location =>
-              <LocationRow
-                key={location.gym_location_id}
-                checkIn={this.props.checkIn}
-                member={this.props.member}
-                location={location} />
-            )}
-          </tbody>
-        </table>
+      <div className="location-list">
+        <PageBody>
+          <h3>Check In</h3>
+          {this.props.locations.map(location =>
+            <LocationRow
+              key={location.gym_location_id}
+              checkIn={this.props.checkIn}
+              member={this.props.member}
+              location={location} />
+          )}
+        </PageBody>
       </div>
     );
   }

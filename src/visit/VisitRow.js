@@ -17,6 +17,7 @@ class VisitRow extends Component {
 
   render() {
     let className: string = 'columns visit-row';
+    let createdOn: string = this.props.visit.created_on ? this.props.visit.created_on : '';
 
     if (this.props.visit.status_id === statusEnum.Approved) {
       className += ' approved';
@@ -28,7 +29,7 @@ class VisitRow extends Component {
     return (
       <div className={className} onClick={this.props.clickHandler}>
         <span>{this.props.member.first_name + ' ' + this.props.member.last_name}</span>
-        <span>{formatTime(this.props.visit.created_on)}</span>
+        <span>{formatTime(createdOn)}</span>
       </div>
     )
   }
