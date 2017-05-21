@@ -1,6 +1,7 @@
 // @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import onClickOutside from 'react-onclickoutside';
 
 import Button from '../shared/Button';
 
@@ -12,10 +13,15 @@ export type NavStateProps = {
 
 export type NavDispatchProps = {
   toggleMenu: Function;
+  closeMenu: Function;
 };
 
 class Nav extends Component {
   props: NavStateProps & NavDispatchProps;
+
+  handleClickOutside(evt) {
+    this.props.closeMenu();
+  }
 
   render() {
     return (
@@ -47,4 +53,4 @@ class Nav extends Component {
   }
 }
 
-export default Nav;
+export default onClickOutside(Nav);

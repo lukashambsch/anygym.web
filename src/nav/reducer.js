@@ -1,5 +1,5 @@
 // @flow
-import { TOGGLE_MENU } from './actions';
+import { TOGGLE_MENU, CLOSE_MENU } from './actions';
 
 type State = {
   isMenuVisible: boolean;
@@ -14,6 +14,10 @@ const nav = (state: State = initialState, action: Object) => {
     case TOGGLE_MENU:
       return Object.assign({}, state, {
         isMenuVisible: !state.isMenuVisible
+      });
+    case CLOSE_MENU:
+      return Object.assign({}, state, {
+        isMenuVisible: false
       });
     default:
       return state;

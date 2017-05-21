@@ -6,7 +6,7 @@ import Nav from '../Nav';
 function setup() {
   const props = { };
 
-  const nav = shallow(<Nav {...props} />);
+  const nav = shallow(<Nav {...props} />).find('Nav').shallow();
 
   return {
     props,

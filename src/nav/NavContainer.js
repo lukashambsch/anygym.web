@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import Nav from './Nav';
 import type { NavStateProps, NavDispatchProps } from './Nav';
-import { toggleMenu } from './actions';
+import { toggleMenu, closeMenu } from './actions';
 
 function mapStateToProps(state): NavStateProps {
   return {
@@ -15,6 +15,9 @@ function mapDispatchToProps(dispatch): NavDispatchProps {
   return {
     toggleMenu: () => {
       dispatch(toggleMenu());
+    },
+    closeMenu: () => {
+      dispatch(closeMenu());
     }
   };
 }
