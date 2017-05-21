@@ -5,12 +5,13 @@ import { withRouter } from 'react-router';
 
 import App from './App';
 import { checkForToken } from './auth/actions';
+import type { AppStateProps, AppDispatchProps } from './App';
 
-const mapStateToProps = (state) => {
+function mapStateToProps(state: Object): AppStateProps {
   return {};
 }
 
-const mapDispatchToProps = (dispatch) => {
+function mapDispatchToProps(dispatch): AppDispatchProps {
   return {
     checkForToken: () => {
       dispatch(checkForToken())

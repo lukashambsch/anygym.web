@@ -11,7 +11,15 @@ import RegisterScreenContainer from './auth/RegisterScreenContainer';
 
 import './App.css';
 
+export type AppStateProps = { };
+
+export type AppDispatchProps = {
+  checkForToken: Function;
+};
+
 class App extends Component {
+  props: AppStateProps & AppDispatchProps;
+
   componentWillMount() {
     this.props.checkForToken();
   }
@@ -22,7 +30,7 @@ class App extends Component {
         <NavContainer />
         <Route exact path="/" render={() => (
           <Redirect to="/login" />
-        )}/>
+        )} />
         <Route path="/login" component={LoginScreenContainer} />
         <Route path="/register" component={RegisterScreenContainer} />
         <Route path="/gym" component={GymScreenContainer} onEnter={requireAuth} />
