@@ -16,6 +16,8 @@ export const REQUEST_TOKEN = 'REQUEST_TOKEN';
 export const CHECK_FOR_TOKEN = 'CHECK_FOR_TOKEN';
 export const REQUEST_REGISTER = 'REQUEST_REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
+export const REQUEST_USER = 'REQUEST_USER';
+export const RECEIVE_USER = 'RECEIVE_USER';
 
 export function authenticateSuccess(token: string) {
   let authHeader: string = `Bearer ${token}`;
@@ -65,6 +67,8 @@ export function handlePasswordConfirmChange(event: SyntheticInputEvent) {
 }
 
 export function requestToken(user: User) {
+  Cookies.set(config.emailCookieKey, user.email);
+
   return {
     type: REQUEST_TOKEN,
     user: user
@@ -75,6 +79,20 @@ export function requestRegister(user: User) {
   return {
     type: REQUEST_REGISTER,
     user: user
+  };
+}
+
+export function requestUser(email: string) {
+  return {
+    type: REQUEST_USER,
+    email: email
+  };
+}
+
+export function receiveUser(json: User) {
+  return {
+    type: RECEIVE_USER,
+    user: json
   };
 }
 
@@ -91,7 +109,8 @@ export function checkForToken() {
   return {
     type: CHECK_FOR_TOKEN,
     token: token,
-    authenticated: token ? true : false
+    authenticated: token ? true : false,
+    email: Cookies.get(config.emailCookieKey)
   };
 }
 

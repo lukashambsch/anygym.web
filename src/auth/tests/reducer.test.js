@@ -28,8 +28,6 @@ describe('auth reducer', () => {
     expect(nextState.isAuthenticating).toBe(false);
     expect(nextState.authenticated).toBe(true);
     expect(nextState.token).toBe(action.token);
-    expect(nextState.email).toBe('');
-    expect(nextState.password).toBe('');
   });
 
   it('should handle SET_AUTH_FAILURE', () => {
@@ -40,8 +38,7 @@ describe('auth reducer', () => {
     expect(nextState.isAuthenticating).toBe(false);
     expect(nextState.authenticated).toBe(false);
     expect(nextState.token).toEqual('');
-    expect(nextState.email).toEqual('');
-    expect(nextState.password).toEqual('');
+    expect(nextState.user.password).toEqual('');
   });
 
   it('should handle HANDLE_EMAIL_CHANGE', () => {
@@ -52,7 +49,7 @@ describe('auth reducer', () => {
 
     const nextState = reducer(initialState, action);
 
-    expect(nextState.email).toEqual(action.email);
+    expect(nextState.user.email).toEqual(action.email);
   });
 
   it('should handle HANDLE_PASSWORD_CHANGE', () => {
@@ -63,7 +60,7 @@ describe('auth reducer', () => {
 
     const nextState = reducer(initialState, action);
 
-    expect(nextState.password).toEqual(action.password);
+    expect(nextState.user.password).toEqual(action.password);
   });
 
   it('should handle HANDLE_PASSWORD_CONFIRM_CHANGE', () => {
@@ -113,8 +110,8 @@ describe('auth reducer', () => {
     const nextState = reducer(initialState, action);
 
     expect(nextState.isRegistering).toBe(false);
-    expect(nextState.email).toEqual('')
-    expect(nextState.password).toEqual('')
+    expect(nextState.user.email).toEqual('')
+    expect(nextState.user.password).toEqual('')
     expect(nextState.passwordConfirm).toEqual('')
   });
 

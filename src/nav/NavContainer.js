@@ -7,7 +7,8 @@ import { toggleMenu, closeMenu } from './actions';
 
 function mapStateToProps(state): NavStateProps {
   return {
-    isMenuVisible: state.nav.isMenuVisible
+    isMenuVisible: state.nav.isMenuVisible,
+    user: state.auth.user
   };
 }
 

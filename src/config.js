@@ -6,7 +6,8 @@ type Config = {
 
 let config: Config = {
   apiRoot: 'http://localhost:8080/api/v1',
-  tokenKey: 'jwtToken'
+  tokenKey: 'jwtToken',
+  emailCookieKey: 'email'
 };
 
 export default config;

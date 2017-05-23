@@ -8,7 +8,8 @@ import {
   REQUEST_TOKEN,
   CHECK_FOR_TOKEN,
   REQUEST_REGISTER,
-  REGISTER_SUCCESS
+  REGISTER_SUCCESS,
+  RECEIVE_USER
 } from './actions';
 import type { User } from './types';
 
@@ -93,6 +94,10 @@ function auth (state: State = initialState, action: Object) {
       return Object.assign({}, state, {
         isRegistering: false,
         passwordConfirm: ''
+      });
+    case RECEIVE_USER:
+      return Object.assign({}, state, {
+        user: action.user
       });
     default:
       return state;
