@@ -4,9 +4,11 @@ describe('location actions', () => {
 
   it('receiveLocations should create an action to set the locations', () => {
     const json = [{
-      gym_location_id: 1
+      gym_location_id: 1,
+      business_hours: []
     }, {
-      gym_location_id: 2
+      gym_location_id: 2,
+      business_hours: []
     }];
     const expectedItems = {
       1: json[0],

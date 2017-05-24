@@ -3,6 +3,7 @@ export type User = {
   email: string;
   password: string;
   created_on?: string;
+  roles: Role[]
 };
 
 export type Role = {

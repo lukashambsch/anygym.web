@@ -1,5 +1,5 @@
 // @flow
-import type { GymLocation } from './types';
+import type { GymLocation, BusinessHour } from './types';
 
 export const REQUEST_LOCATIONS = 'REQUEST_LOCATIONS';
 export const RECEIVE_LOCATIONS = 'RECEIVE_LOCATIONS';
@@ -14,6 +14,14 @@ export function requestLocations() {
 export function receiveLocations(json: Array<GymLocation>) {
   let items = {};
   json.forEach((location) => {
+    let businessHours: Object = {};
+
+    for (let i: number = 0; i < location.business_hours.length; i++) {
+      let businessHour: BusinessHour = location.business_hours[i];
+      businessHours[businessHour.day_id] = businessHour;
+    }
+
+    location.business_hours = businessHours;
     items[location.gym_location_id] = location;
   });
 

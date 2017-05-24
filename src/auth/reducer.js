@@ -31,7 +31,8 @@ export const initialState: State = {
   user: {
     user_id: 0,
     email: '',
-    password: ''
+    password: '',
+    roles: []
   }
 };
 
