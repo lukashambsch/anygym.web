@@ -33,7 +33,7 @@ describe('visit reducer', () => {
     expect(nextState.isFetching).toBe(false);
     expect(nextState.items).toEqual(action.visits);
     expect(nextState.lastUpdated).toEqual(action.receivedAt);
-  })
+  });
 
   it('should handle RECEIVE_VISIT', () => {
     const action = {
