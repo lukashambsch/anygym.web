@@ -5,6 +5,8 @@ import GymScreen from '../GymScreen';
 
 function setup() {
   const props = {
+    authenticated: true,
+    toToLogin: jest.fn(),
     getVisits: jest.fn(),
     getMembers: jest.fn(),
     getStatuses: jest.fn()

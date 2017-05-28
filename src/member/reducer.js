@@ -23,7 +23,7 @@ const members = (state: State = initialState, action: Object) => {
       return Object.assign({}, state, {
         isFetching: false,
         items: action.members,
-        lastUpdated: action.recievedAt
+        lastUpdated: action.receivedAt
       });
     case FAIL_MEMBER_REQUEST:
       return Object.assign({}, state, {
