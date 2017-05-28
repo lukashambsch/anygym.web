@@ -40,21 +40,6 @@ class Nav extends Component {
     return canView;
   }
 
-  canViewMember(): boolean {
-    let memberRole: string = 'member';
-    let canView: boolean = false;
-
-    for (let i: number = 0; i < this.props.user.roles.length; i++) {
-      let role: Role = this.props.user.roles[i];
-      if (role.role_name === memberRole || role.role_name === 'admin') {
-        canView = true;
-        break;
-      }
-    }
-
-    return canView;
-  }
-
   render() {
     return (
       <nav>
@@ -72,11 +57,9 @@ class Nav extends Component {
         </Button>
         {this.props.isMenuVisible &&
           <ul>
-            {this.canViewMember() &&
-              <li>
-                <Link to="/member/locations" onClick={this.props.closeMenu}>Find a Gym</Link>
-              </li>
-            }
+            <li>
+              <Link to="/member/locations" onClick={this.props.closeMenu}>Find a Gym</Link>
+            </li>
             {this.canViewGym() &&
               <li>
                 <Link to="/gym/visits" onClick={this.props.closeMenu}>Approve a Check In</Link>
