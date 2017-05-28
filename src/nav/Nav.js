@@ -16,6 +16,7 @@ export type NavStateProps = {
 export type NavDispatchProps = {
   toggleMenu: Function;
   closeMenu: Function;
+  logoutUser: Function;
 };
 
 class Nav extends Component {
@@ -69,7 +70,7 @@ class Nav extends Component {
               <Link to="/account" onClick={this.props.closeMenu}>My Account</Link>
             </li>
             <li>
-              <Link to="/login" onClick={this.props.closeMenu}>Logout</Link>
+              <Link to="/login" onClick={this.props.logoutUser}>Logout</Link>
             </li>
           </ul>
         }

@@ -98,6 +98,7 @@ export function receiveUser(json: User) {
 }
 
 export function logoutUser() {
+  Cookies.remove(config.tokenKey);
   delete axios.defaults.headers.common['Authorization'];
 
   return {
