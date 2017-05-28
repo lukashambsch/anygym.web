@@ -1,7 +1,6 @@
 // @flow
 import React, { Component } from 'react';
 
-import Button from '../shared/Button';
 import { formatAddress, formatTime } from '../shared/utils';
 import type { Visit } from '../visit/types';
 import { statusEnum } from '../status/enums';
@@ -9,7 +8,6 @@ import { statusEnum } from '../status/enums';
 class LocationRow extends Component {
   props: {
     location: Object,
-    checkIn: Function,
     member: Object
   };
 
@@ -40,23 +38,22 @@ class LocationRow extends Component {
     return (
       <div className="columns location-row">
         <div className="row">
-          <span>{this.props.location.location_name}</span>
-        </div>
-        <div className="row">
           <span className="columns six">
-            {formatAddress(this.props.location.address)}
+            {this.props.location.location_name}
           </span>
           <span className="columns six">
             {`${this.getOpenTime()} - ${this.getCloseTime()}`}
           </span>
+          <span className="columns six">
+            {formatAddress(this.props.location.address)}
+          </span>
+          <span className="columns six">
+            {this.props.location.website_url}
+          </span>
+          <span className="columns six">
+            {this.props.location.phone_number}
+          </span>
         </div>
-        <span>
-          <Button
-            color="blue"
-            clickHandler={() => this.props.checkIn(this.getVisit())}>
-            Check In
-          </Button>
-        </span>
       </div>
     );
   }
