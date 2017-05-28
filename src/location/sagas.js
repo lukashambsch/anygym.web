@@ -5,7 +5,7 @@ import locationApi from './api'
 import { REQUEST_LOCATIONS } from './actions'
 import { receiveLocations, failLocationRequest } from './actions'
 
-function* getLocations(action) {
+export function* getLocations(action: Object): any {
   try {
     const locations = yield call(locationApi.getLocations)
 
@@ -15,7 +15,7 @@ function* getLocations(action) {
   }
 }
 
-function* getLocationsSaga() {
+export function* getLocationsSaga(): any {
   yield takeLatest(REQUEST_LOCATIONS, getLocations)
 }
 

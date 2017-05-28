@@ -1,4 +1,4 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { takeLatest } from 'redux-saga/effects';
 
 import { REQUEST_TOKEN, REQUEST_REGISTER } from '../actions';
 import { getTokenSaga, registerUserSaga, getToken, registerUser } from '../sagas';

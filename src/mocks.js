@@ -14,7 +14,7 @@ export const visits = [
     member_id: 2,
     status_id: 1
   },
-]
+];
 
 export const statuses = {
   1: {
@@ -25,7 +25,7 @@ export const statuses = {
     status_id: 2,
     status_name: 'Approved'
   }
-}
+};
 
 export const members = {
   1: {
@@ -42,4 +42,15 @@ export const members = {
     last_name: 'Hambsch',
     address_id: null
   }
-}
+};
+
+export const gymLocations = {
+  1: {
+    gym_location_id: 1,
+    location_name: 'Location Name',
+    business_hours: [],
+    address: {},
+    website_url: 'http://www.google.com',
+    phone_number: '858-858-8588'
+  }
+};

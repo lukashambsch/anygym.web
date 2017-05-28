@@ -22,19 +22,31 @@ class LocationRow extends Component {
 
   getOpenTime(): string {
     let today: number = new Date().getDay() + 1;
-    let openTime: string = this.props.location.business_hours[today].open_time;
 
-    return formatTime(openTime, false);
+    if (this.props.location.business_hours[today]) {
+      let openTime: string = this.props.location.business_hours[today].open_time;
+      return formatTime(openTime, false);
+    }
+
+    return '';
+
   }
 
   getCloseTime(): string {
     let today: number = new Date().getDay() + 1;
-    let closeTime: string = this.props.location.business_hours[today].close_time;
 
-    return formatTime(closeTime, false);
+    if (this.props.location.business_hours[today]) {
+      let closeTime: string = this.props.location.business_hours[today].close_time;
+      return formatTime(closeTime, false);
+    }
+
+    return '';
   }
 
   render() {
+    let openTime: string = this.getOpenTime();
+    let closeTime: string = this.getCloseTime();
+
     return (
       <div className="columns location-row">
         <div className="row">
@@ -42,7 +54,9 @@ class LocationRow extends Component {
             {this.props.location.location_name}
           </span>
           <span className="columns six">
-            {`${this.getOpenTime()} - ${this.getCloseTime()}`}
+            {(openTime && closeTime) &&
+              `${openTime} - ${closeTime}`
+            }
           </span>
           <span className="columns six">
             {formatAddress(this.props.location.address)}
