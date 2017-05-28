@@ -1,5 +1,6 @@
 // @flow
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 // https://github.com/ReactTraining/react-router/blob/master/packages/react-router/docs/guides/blocked-updates.md
 import { withRouter } from 'react-router';
 
@@ -10,7 +11,9 @@ import { requestStatuses } from '../status/actions';
 import type { GymScreenStateProps, GymScreenDispatchProps } from './GymScreen';
 
 function mapStateToProps(state): GymScreenStateProps {
-  return {};
+  return {
+    authenticated: state.auth.authenticated
+  };
 }
 
 function mapDispatchToProps(dispatch): GymScreenDispatchProps {
@@ -23,6 +26,9 @@ function mapDispatchToProps(dispatch): GymScreenDispatchProps {
     },
     getStatuses: () => {
       dispatch(requestStatuses());
+    },
+    goToLogin: () => {
+      dispatch(push('/login'));
     }
   };
 }

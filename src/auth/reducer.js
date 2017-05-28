@@ -9,7 +9,8 @@ import {
   CHECK_FOR_TOKEN,
   REQUEST_REGISTER,
   REGISTER_SUCCESS,
-  RECEIVE_USER
+  RECEIVE_USER,
+  LOGOUT_USER
 } from './actions';
 import type { User } from './types';
 
@@ -32,7 +33,8 @@ export const initialState: State = {
     user_id: 0,
     email: '',
     password: '',
-    roles: []
+    roles: [],
+    member: {}
   }
 };
 
@@ -99,6 +101,10 @@ function auth (state: State = initialState, action: Object) {
     case RECEIVE_USER:
       return Object.assign({}, state, {
         user: action.user
+      });
+    case LOGOUT_USER:
+      return Object.assign({}, state, {
+        user: initialState.user
       });
     default:
       return state;

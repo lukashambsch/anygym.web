@@ -17,7 +17,7 @@ class LocationRow extends Component {
     return {
       visit_id: 0,
       member_id: this.props.member.member_id,
-      gym_location_id: this.props.location.location_id,
+      gym_location_id: this.props.location.gym_location_id,
       status_id: statusEnum.Pending
     };
   }

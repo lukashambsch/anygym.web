@@ -18,6 +18,7 @@ export const REQUEST_REGISTER = 'REQUEST_REGISTER';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REQUEST_USER = 'REQUEST_USER';
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const LOGOUT_USER = 'LOGOUT_USER';
 
 export function authenticateSuccess(token: string) {
   let authHeader: string = `Bearer ${token}`;
@@ -93,6 +94,14 @@ export function receiveUser(json: User) {
   return {
     type: RECEIVE_USER,
     user: json
+  };
+}
+
+export function logoutUser() {
+  delete axios.defaults.headers.common['Authorization'];
+
+  return {
+    type: LOGOUT_USER
   };
 }
 

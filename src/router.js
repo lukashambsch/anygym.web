@@ -16,15 +16,4 @@ var router =
     </ConnectedRouter>
   </Provider>;
 
-export function requireAuth(nextState, replace) {
-  let token = Cookies.get(config.tokenKey);
-
-  if (!token) {
-    replace({
-      pathname: 'login',
-      state: { nextPathname: nextState.location.pathname }
-    });
-  }
-}
-
 export default router;
