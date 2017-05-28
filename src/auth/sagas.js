@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 import { call, put, takeLatest, fork } from 'redux-saga/effects';
 
 import authApi from './api';
-import { REQUEST_TOKEN, REQUEST_REGISTER, REQUEST_USER, CHECK_FOR_TOKEN, SET_AUTH_FAILURE } from './actions';
+import { REQUEST_TOKEN, REQUEST_REGISTER, REQUEST_USER, CHECK_FOR_TOKEN } from './actions';
 import {
   requestToken,
   registerSuccess,
@@ -77,17 +77,12 @@ export function* requestUserSaga(): any {
   yield takeLatest(CHECK_FOR_TOKEN, callRequestUser);
 }
 
-export function* logoutUserSaga(): any {
-  yield takeLatest(SET_AUTH_FAILURE, logoutUser);
-}
-
 function* authSaga(): any {
   yield [
     fork(getTokenSaga),
     fork(registerUserSaga),
     fork(getUserSaga),
     fork(requestUserSaga),
-    fork(logoutUserSaga)
   ];
 }
 
