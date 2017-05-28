@@ -12,7 +12,7 @@ import type { Visit } from './types';
 type State = {
   isFetching: boolean;
   visibilityFilter: string;
-  items: Object;
+  items: { [key: number]: Visit };
   visit: ?Visit;
   error: ?Error;
 };

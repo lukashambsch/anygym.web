@@ -2,12 +2,11 @@
 import { connect } from 'react-redux';
 
 import { fetchLocations } from './actions';
-import { createVisit } from '../visit/actions';
 import LocationList from './LocationList';
-import type { Visit } from '../visit/types';
 import type { LocationListStateProps, LocationListDispatchProps } from '../member/types';
 
 function mapStateToProps(state: Object): LocationListStateProps {
+  // TODO: Change to use Object.values when flowtype support improves. https://github.com/facebook/flow/issues/2221
   let locations = Object.keys(state.locations.items).map((key) => state.locations.items[key]);
 
   return {
@@ -18,9 +17,6 @@ function mapStateToProps(state: Object): LocationListStateProps {
 
 function mapDispatchToProps(dispatch: Function): LocationListDispatchProps {
   return {
-    checkIn: (visit: Visit) => {
-      dispatch(createVisit(visit))
-    },
     loadData: () => {
       dispatch(fetchLocations())
     }

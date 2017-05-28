@@ -24,6 +24,7 @@ function getVisibleVisits(visits: Array<Visit>, filter: string): Array<any> {
 }
 
 function mapStateToProps(state: Object): VisitListStateProps {
+  // TODO: Change to use Object.values when flowtype support improves. https://github.com/facebook/flow/issues/2221
   let visits: Array<Visit> = Object.keys(state.visits.items).map((key) => state.visits.items[key]);
 
   return {

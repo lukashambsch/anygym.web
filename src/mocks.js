@@ -52,5 +52,13 @@ export const gymLocations = {
     address: {},
     website_url: 'http://www.google.com',
     phone_number: '858-858-8588'
+  },
+  2: {
+    gym_location_id: 2,
+    location_name: 'Location Name',
+    business_hours: [],
+    address: {},
+    website_url: 'http://www.google.com',
+    phone_number: '858-858-8588'
   }
 };

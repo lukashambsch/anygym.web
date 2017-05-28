@@ -1,9 +1,10 @@
 // @flow
 import { REQUEST_MEMBERS, RECEIVE_MEMBERS, FAIL_MEMBER_REQUEST } from './actions';
+import type { Member } from './types';
 
 type State = {
   isFetching: boolean;
-  items: Object;
+  items: { [key: number]: Member };
   error: ?Error;
 };
 

@@ -1,9 +1,10 @@
 // @flow
 import { REQUEST_LOCATIONS, RECEIVE_LOCATIONS, FAIL_LOCATION_REQUEST } from './actions';
+import type { GymLocation } from './types';
 
 type State = {
   isFetching: boolean;
-  items: Object;
+  items: { [key: number]: GymLocation};
   error: ?Error;
 };
 

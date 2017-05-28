@@ -1,15 +1,16 @@
 // @flow
 import { REQUEST_STATUSES, FAIL_STATUS_REQUEST, RECEIVE_STATUSES } from './actions';
+import type { Status } from './types';
 
 type State = {
   isFetching: boolean;
-  items: Object;
+  items: Status[];
   error: ?Error;
 };
 
 export const initialState: State = {
   isFetching: false,
-  items: {},
+  items: [],
   error: null
 };
 

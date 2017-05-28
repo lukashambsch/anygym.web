@@ -21,7 +21,7 @@ function setup() {
 describe('<LocationRow />', () => {
 
   it('LocationRow renders self and subcomponents', () => {
-    const { props, locationRow } = setup();
+    const { locationRow } = setup();
 
     expect(locationRow.find('.location-row').length).toEqual(1);
     expect(locationRow.find('span.six').length).toEqual(5);
