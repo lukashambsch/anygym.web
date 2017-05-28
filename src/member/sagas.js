@@ -5,7 +5,7 @@ import memberApi from './api';
 import { REQUEST_MEMBERS } from './actions';
 import { receiveMembers, failMemberRequest } from './actions';
 
-function* getMembers(action) {
+export function* getMembers(action: Object): any {
   try {
     const members = yield call(memberApi.getMembers);
 
@@ -15,7 +15,7 @@ function* getMembers(action) {
   }
 }
 
-function* getMembersSaga() {
+export function* getMembersSaga(): any {
   yield takeLatest(REQUEST_MEMBERS, getMembers);
 }
 
