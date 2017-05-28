@@ -6,7 +6,7 @@ import { CREATE_VISIT, UPDATE_VISIT, REQUEST_VISITS, REQUEST_VISIT } from './act
 import { receiveVisit, receiveVisits, createVisitSuccess, updateVisitSuccess, failVisitRequest } from './actions';
 import type { Visit } from './types';
 
-export function* createVisit(action) {
+export function* createVisit(action: Object): any {
   try {
     yield call(visitApi.createVisit, action.visit);
     yield put(createVisitSuccess());
@@ -15,7 +15,7 @@ export function* createVisit(action) {
   }
 }
 
-export function* updateVisit(action) {
+export function* updateVisit(action: Object): any {
   try {
     yield call(visitApi.updateVisit, action.visit);
     yield put(updateVisitSuccess());
@@ -24,7 +24,7 @@ export function* updateVisit(action) {
   }
 }
 
-export function* getVisits(action) {
+export function* getVisits(action: Object): any {
   try {
     const visits = yield call(visitApi.getVisits);
 
@@ -34,7 +34,7 @@ export function* getVisits(action) {
   }
 }
 
-export function* getVisit(action) {
+export function* getVisit(action: Object): any {
   try {
     let visit: Visit = yield select((state) => {
       return state.visits.items[action.visit_id]
@@ -50,19 +50,19 @@ export function* getVisit(action) {
   }
 }
 
-export function* getVisitSaga() {
+export function* getVisitSaga(): any {
   yield takeLatest(REQUEST_VISIT, getVisit);
 }
 
-export function* getVisitsSaga() {
+export function* getVisitsSaga(): any {
   yield takeLatest(REQUEST_VISITS, getVisits);
 }
 
-export function* createVisitSaga() {
+export function* createVisitSaga(): any {
   yield takeLatest(CREATE_VISIT, createVisit);
 }
 
-export function* updateVisitSaga() {
+export function* updateVisitSaga(): any {
   yield takeLatest(UPDATE_VISIT, updateVisit);
 }
 

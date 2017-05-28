@@ -5,7 +5,7 @@ import statusApi from './api';
 import { REQUEST_STATUSES } from './actions';
 import { receiveStatuses, failStatusRequest } from './actions';
 
-export function* getStatuses(action) {
+export function* getStatuses(action: Object): any {
   try {
     const statuses = yield call(statusApi.getStatuses);
 
@@ -15,7 +15,7 @@ export function* getStatuses(action) {
   }
 }
 
-export function* getStatusesSaga() {
+export function* getStatusesSaga(): any {
   yield takeLatest(REQUEST_STATUSES, getStatuses);
 }
 
